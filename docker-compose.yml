@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres-buscadis
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: buscadis
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo:5
+    container_name: mongodb-buscadis
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+  app:
+    build: .
+    container_name: app-buscadis
+    environment:
+      DATABASE_URL: postgres://user:password@postgres-buscadis:5432/buscadis
+      MONGODB_URL: mongodb://root:example@mongodb-buscadis:27017
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+      - mongodb
+
+volumes:
+  postgres_data:
+  mongo_data:
