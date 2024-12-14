@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated/mongo"
 }
 
 datasource mongodb {
@@ -8,7 +9,7 @@ datasource mongodb {
 }
 
 model Adiso {
-  id          String         @id @default(auto()) @map("_id") // MongoDB ObjectId
+  id          String         @id @default(auto()) @map("_id") @mongodb.ObjectId
   titulo      String
   descripcion String
   categoriaId Int
@@ -27,18 +28,20 @@ model Adiso {
 }
 
 model Imagen {
-  id          String         @id @default(auto()) @map("_id")
+  id          String         @id @default(auto()) @map("_id") @mongodb.ObjectId
   url         String
-  adisoId     String         // MongoDB ObjectId de Adiso
+  adisoId     String         @mongodb.ObjectId
+  adiso       Adiso          @relation(fields: [adisoId], references: [id])
 }
 
 model Comentario {
-  id          String         @id @default(auto()) @map("_id")
+  id          String         @id @default(auto()) @map("_id") @mongodb.ObjectId
   contenido   String
   calificacion Int?
   creadoEn    DateTime        @default(now())
   usuarioId   Int
-  adisoId     String         // MongoDB ObjectId de Adiso
+  adisoId     String         @mongodb.ObjectId
+  adiso       Adiso          @relation(fields: [adisoId], references: [id])
 }
 
 enum EstadoAdiso {
