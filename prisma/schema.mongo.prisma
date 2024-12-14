@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource mongodb {
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
+}
+
+model Adiso {
+  id          String         @id @default(auto()) @map("_id") // MongoDB ObjectId
+  titulo      String
+  descripcion String
+  categoriaId Int
+  precio      Float?
+  moneda      String? // Ejemplo: "USD", "PEN"
+  contacto    String
+  latitud     Float?
+  longitud    Float?
+  estado      EstadoAdiso
+  expiracion  DateTime?
+  creadoEn    DateTime        @default(now())
+  usuarioId   Int
+  comentarios Comentario[]
+  imagenes    Imagen[]
+  extra       Json?           // Para datos adicionales
+}
+
+model Imagen {
+  id          String         @id @default(auto()) @map("_id")
+  url         String
+  adisoId     String         // MongoDB ObjectId de Adiso
+}
+
+model Comentario {
+  id          String         @id @default(auto()) @map("_id")
+  contenido   String
+  calificacion Int?
+  creadoEn    DateTime        @default(now())
+  usuarioId   Int
+  adisoId     String         // MongoDB ObjectId de Adiso
+}
+
+enum EstadoAdiso {
+  ACTIVO
+  INACTIVO
+  VENDIDO
+  EXPIRADO
+}
