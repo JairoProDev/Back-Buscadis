@@ -5,13 +5,24 @@ import { PrismaMongoService } from '../prisma/prisma.mongo.service';
 export class AdsService {
   constructor(private readonly prisma: PrismaMongoService) {}
 
-  async createAd(data: { titulo: string; descripcion: string; usuarioId: number }) {
+  async createAd(data: {
+    titulo: string;
+    descripcion: string;
+    usuarioId: number;
+  }) {
     return this.prisma.adiso.create({
-      data,
+      data: {
+        titulo: data.titulo,
+        descripcion: data.descripcion,
+        usuario: { connect: { id: data.usuarioId } },
+        contacto: 'default_contact', // Añadir contacto
+        estado: 'ACTIVO', // Añadir estado
+        categoria: { connect: { id: 1 } }, // Añadir categoría (ejemplo)
+      },
     });
   }
 
-  async getAdById(id: string) {
+  async getAdById(id: number) {
     return this.prisma.adiso.findUnique({
       where: { id },
     });
@@ -20,7 +31,10 @@ export class AdsService {
   async searchAdsByTitle(title: string) {
     return this.prisma.adiso.findMany({
       where: {
-        titulo: { contains: title, mode: 'insensitive' },
+        titulo: {
+          contains: title,
+          mode: 'insensitive',
+        },
       },
     });
   }

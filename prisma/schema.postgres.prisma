@@ -8,95 +8,96 @@ datasource db {
 }
 
 model Usuario {
-  id                    Int              @id @default(autoincrement())
+  id                    Int           @id @default(autoincrement())
   nombre                String
-  email                 String           @unique
+  email                 String        @unique
   password              String
-  tipo                  String           // Ejemplo: "particular", "profesional"
-  creadoEn              DateTime         @default(now())
+  tipo                  String
+  creadoEn              DateTime      @default(now())
   avisos                Adiso[]
   comentarios           Comentario[]
-  mensajesEnviados      Mensaje[]        @relation("mensajesEnviados")
-  mensajesRecibidos     Mensaje[]        @relation("mensajesRecibidos")
-  valoracionesRecibidas Valoracion[]     @relation("valoracionesRecibidas")
-  valoracionesDadas     Valoracion[]     @relation("valoracionesDadas")
-  compras               Transaccion[]    @relation("compras")
-  ventas                Transaccion[]    @relation("ventas")
+  mensajesRecibidos     Mensaje[]     @relation("mensajesRecibidos")
+  mensajesEnviados      Mensaje[]     @relation("mensajesEnviados")
+  compras               Transaccion[] @relation("compras")
+  ventas                Transaccion[] @relation("ventas")
+  valoracionesDadas     Valoracion[]  @relation("valoracionesDadas")
+  valoracionesRecibidas Valoracion[]  @relation("valoracionesRecibidas")
 }
 
 model Adiso {
-  id          Int        @id @default(autoincrement())
+  id          Int          @id @default(autoincrement())
   titulo      String
   descripcion String
-  categoria   Categoria  @relation(fields: [categoriaId], references: [id])
-  categoriaId Int
   precio      Float?
   contacto    String
   ubicacion   String?
-  estado      String     // Ejemplo: "activo", "inactivo", "vendido"
+  creadoEn    DateTime     @default(now())
+  categoriaId Int
+  estado      String
   expiracion  DateTime?
-  creadoEn    DateTime   @default(now())
-  usuario     Usuario    @relation(fields: [usuarioId], references: [id])
   usuarioId   Int
+  categoria   Categoria    @relation(fields: [categoriaId], references: [id])
+  usuario     Usuario      @relation(fields: [usuarioId], references: [id])
   comentarios Comentario[]
   imagenes    Imagen[]
-  @@index([titulo], name: "idx_titulo")
-  @@index([categoriaId], name: "idx_categoria")
+
+  @@index([titulo], map: "idx_titulo")
+  @@index([categoriaId], map: "idx_categoria")
 }
 
 model Categoria {
-  id            Int          @id @default(autoincrement())
+  id            Int         @id @default(autoincrement())
   nombre        String
   parentId      Int?
-  parent        Categoria?    @relation("Subcategorias", fields: [parentId], references: [id])
-  subcategorias Categoria[]   @relation("Subcategorias")
   avisos        Adiso[]
+  parent        Categoria?  @relation("Subcategorias", fields: [parentId], references: [id])
+  subcategorias Categoria[] @relation("Subcategorias")
 }
 
 model Comentario {
   id        Int      @id @default(autoincrement())
   contenido String
   creadoEn  DateTime @default(now())
-  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
   usuarioId Int
-  adiso     Adiso    @relation(fields: [adisoId], references: [id])
   adisoId   Int
+  adiso     Adiso    @relation(fields: [adisoId], references: [id])
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
 }
 
 model Imagen {
-  id        Int      @id @default(autoincrement())
-  url       String
-  adiso     Adiso    @relation(fields: [adisoId], references: [id])
-  adisoId   Int
+  id      Int    @id @default(autoincrement())
+  url     String
+  adisoId Int
+  adiso   Adiso  @relation(fields: [adisoId], references: [id])
 }
 
 model Mensaje {
-  id            Int      @id @default(autoincrement())
-  contenido     String
-  enviadoEn     DateTime @default(now())
-  remitente     Usuario  @relation("mensajesEnviados", fields: [remitenteId], references: [id])
-  remitenteId   Int
-  destinatario  Usuario  @relation("mensajesRecibidos", fields: [destinatarioId], references: [id])
+  id             Int      @id @default(autoincrement())
+  contenido      String
+  enviadoEn      DateTime @default(now())
+  remitenteId    Int
   destinatarioId Int
+  destinatario   Usuario  @relation("mensajesRecibidos", fields: [destinatarioId], references: [id])
+  remitente      Usuario  @relation("mensajesEnviados", fields: [remitenteId], references: [id])
 }
 
 model Valoracion {
-  id            Int      @id @default(autoincrement())
-  puntuacion    Int
-  comentario    String?
-  creadoEn      DateTime @default(now())
-  usuario       Usuario  @relation("valoracionesRecibidas", fields: [usuarioId], references: [id])
-  usuarioId     Int
-  evaluador     Usuario  @relation("valoracionesDadas", fields: [evaluadorId], references: [id])
-  evaluadorId   Int
+  id          Int      @id @default(autoincrement())
+  puntuacion  Int
+  comentario  String?
+  creadoEn    DateTime @default(now())
+  usuarioId   Int
+  evaluadorId Int
+  evaluador   Usuario  @relation("valoracionesDadas", fields: [evaluadorId], references: [id])
+  usuario     Usuario  @relation("valoracionesRecibidas", fields: [usuarioId], references: [id])
 }
 
 model Transaccion {
   id          Int      @id @default(autoincrement())
   monto       Float
   fecha       DateTime @default(now())
-  comprador   Usuario  @relation("compras", fields: [compradorId], references: [id])
   compradorId Int
-  vendedor    Usuario  @relation("ventas", fields: [vendedorId], references: [id])
   vendedorId  Int
+  comprador   Usuario  @relation("compras", fields: [compradorId], references: [id])
+  vendedor    Usuario  @relation("ventas", fields: [vendedorId], references: [id])
 }
