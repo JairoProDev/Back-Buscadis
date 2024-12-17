@@ -1,3 +1,18 @@
+# Buscadis Backend
+
+## Tecnologías utilizadas
+- NestJS
+- Prisma
+- PostgreSQL
+- MongoDB
+- Docker
+
+## Comandos
+- `npm start:dev` - Levanta el backend en modo desarrollo.
+- `npm test` - Corre pruebas unitarias.
+- `docker-compose up` - Levanta PostgreSQL y MongoDB.
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
