@@ -9,7 +9,7 @@ import { PrismaModule } from './prisma/prisma.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, // Hace que esté disponible en toda la app
+      isGlobal: true,
     }),
     UsersModule,
     PrismaModule,
