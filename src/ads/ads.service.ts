@@ -2,6 +2,7 @@
 
 import { Injectable } from '@nestjs/common';
 import { PrismaMongoService } from '../prisma/prisma.mongo.service';
+
 @Injectable()
 export class AdsService {
   constructor(private readonly prisma: PrismaMongoService) {}
@@ -15,15 +16,15 @@ export class AdsService {
       data: {
         titulo: data.titulo,
         descripcion: data.descripcion,
-        usuario: { connect: { id: data.usuarioId } },
-        contacto: 'default_contact', // Añadir contacto
-        estado: 'ACTIVO', // Añadir estado
-        categoria: { connect: { id: 1 } }, // Añadir categoría (ejemplo)
+        usuario: { connect: { id: data.usuarioId.toString() } }, // Asegurar que el ID es string
+        contacto: 'default_contact',
+        estado: 'ACTIVO',
+        categoria: { connect: { id: 1 } },
       },
     });
   }
 
-  async getAdById(id: number) {
+  async getAdById(id: string) { // Cambiar tipo a string
     return this.prisma.adiso.findUnique({
       where: { id },
     });

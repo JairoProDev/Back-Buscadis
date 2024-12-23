@@ -14,7 +14,7 @@ model Adiso {
   descripcion String
   categoriaId Int
   precio      Float?
-  moneda      String? // Ejemplo: "USD", "PEN"
+  moneda      String?
   contacto    String
   latitud     Float?
   longitud    Float?
@@ -24,7 +24,10 @@ model Adiso {
   usuarioId   Int
   comentarios Comentario[]
   imagenes    Imagen[]
-  extra       Json?           // Para datos adicionales
+  extra       Json?
+
+  usuario     Usuario         @relation(fields: [usuarioId], references: [id])
+  categoria   Categoria       @relation(fields: [categoriaId], references: [id])
 }
 
 model Imagen {
@@ -42,6 +45,18 @@ model Comentario {
   usuarioId    Int
   adisoId      String      @mongodb.ObjectId
   adiso        Adiso       @relation(fields: [adisoId], references: [id])
+}
+
+model Usuario {
+  id      Int       @id @default(autoincrement())
+  nombre  String
+  ads     Adiso[]
+}
+
+model Categoria {
+  id    Int     @id @default(autoincrement())
+  nombre String
+  ads   Adiso[]
 }
 
 enum EstadoAdiso {
