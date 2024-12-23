@@ -1,6 +1,7 @@
+// filepath: /c:/Users/Usuario/Desktop/Startup-Buscadis/Back-Buscadis/src/ads/ads.service.ts
+
 import { Injectable } from '@nestjs/common';
 import { PrismaMongoService } from '../prisma/prisma.mongo.service';
-
 @Injectable()
 export class AdsService {
   constructor(private readonly prisma: PrismaMongoService) {}

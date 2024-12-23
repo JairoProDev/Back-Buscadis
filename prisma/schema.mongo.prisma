@@ -28,20 +28,20 @@ model Adiso {
 }
 
 model Imagen {
-  id          String         @id @default(auto()) @map("_id") @mongodb.ObjectId
-  url         String
-  adisoId     String         @mongodb.ObjectId
-  adiso       Adiso          @relation(fields: [adisoId], references: [id])
+  id      String  @id @default(auto()) @map("_id") @mongodb.ObjectId
+  url     String
+  adisoId String  @mongodb.ObjectId
+  adiso   Adiso   @relation(fields: [adisoId], references: [id])
 }
 
 model Comentario {
-  id          String         @id @default(auto()) @map("_id") @mongodb.ObjectId
-  contenido   String
+  id           String      @id @default(auto()) @map("_id") @mongodb.ObjectId
+  contenido    String
   calificacion Int?
-  creadoEn    DateTime        @default(now())
-  usuarioId   Int
-  adisoId     String         @mongodb.ObjectId
-  adiso       Adiso          @relation(fields: [adisoId], references: [id])
+  creadoEn     DateTime    @default(now())
+  usuarioId    Int
+  adisoId      String      @mongodb.ObjectId
+  adiso        Adiso       @relation(fields: [adisoId], references: [id])
 }
 
 enum EstadoAdiso {
