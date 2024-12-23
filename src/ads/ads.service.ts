@@ -1,5 +1,3 @@
-// filepath: /c:/Users/Usuario/Desktop/Startup-Buscadis/Back-Buscadis/src/ads/ads.service.ts
-
 import { Injectable } from '@nestjs/common';
 import { PrismaMongoService } from '../prisma/prisma.mongo.service';
 
@@ -10,21 +8,21 @@ export class AdsService {
   async createAd(data: {
     titulo: string;
     descripcion: string;
-    usuarioId: number;
+    usuarioId: string; // Asegurado que es string
   }) {
     return this.prisma.adiso.create({
       data: {
         titulo: data.titulo,
         descripcion: data.descripcion,
-        usuario: { connect: { id: data.usuarioId.toString() } }, // Asegurar que el ID es string
+        usuario: { connect: { id: data.usuarioId } },
         contacto: 'default_contact',
         estado: 'ACTIVO',
-        categoria: { connect: { id: 1 } },
+        categoria: { connect: { id: '1' } }, // Asegúrate de que el ID es string válido de Categoria
       },
     });
   }
 
-  async getAdById(id: string) { // Cambiar tipo a string
+  async getAdById(id: string) { // Asegurado que el ID es string
     return this.prisma.adiso.findUnique({
       where: { id },
     });

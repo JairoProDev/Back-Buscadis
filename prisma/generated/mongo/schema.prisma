@@ -12,19 +12,22 @@ model Adiso {
   id          String       @id @default(auto()) @map("_id") @mongodb.ObjectId
   titulo      String
   descripcion String
-  categoriaId Int
+  categoriaId String
   precio      Float?
-  moneda      String? // Ejemplo: "USD", "PEN"
+  moneda      String?
   contacto    String
   latitud     Float?
   longitud    Float?
   estado      EstadoAdiso
   expiracion  DateTime?
   creadoEn    DateTime     @default(now())
-  usuarioId   Int
+  usuarioId   String
   comentarios Comentario[]
   imagenes    Imagen[]
-  extra       Json? // Para datos adicionales
+  extra       Json?
+
+  usuario   Usuario   @relation(fields: [usuarioId], references: [id])
+  categoria Categoria @relation(fields: [categoriaId], references: [id])
 }
 
 model Imagen {
@@ -39,9 +42,21 @@ model Comentario {
   contenido    String
   calificacion Int?
   creadoEn     DateTime @default(now())
-  usuarioId    Int
+  usuarioId    String
   adisoId      String   @mongodb.ObjectId
   adiso        Adiso    @relation(fields: [adisoId], references: [id])
+}
+
+model Usuario {
+  id     String  @id @default(auto()) @map("_id") @mongodb.ObjectId
+  nombre String
+  ads    Adiso[]
+}
+
+model Categoria {
+  id     String  @id @default(auto()) @map("_id") @mongodb.ObjectId
+  nombre String
+  ads    Adiso[]
 }
 
 enum EstadoAdiso {

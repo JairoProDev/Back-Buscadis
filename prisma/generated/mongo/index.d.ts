@@ -28,6 +28,16 @@ export type Imagen = $Result.DefaultSelection<Prisma.$ImagenPayload>
  * 
  */
 export type Comentario = $Result.DefaultSelection<Prisma.$ComentarioPayload>
+/**
+ * Model Usuario
+ * 
+ */
+export type Usuario = $Result.DefaultSelection<Prisma.$UsuarioPayload>
+/**
+ * Model Categoria
+ * 
+ */
+export type Categoria = $Result.DefaultSelection<Prisma.$CategoriaPayload>
 
 /**
  * Enums
@@ -84,9 +94,9 @@ export class PrismaClient<
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
-    constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-    $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
-  
+  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
+
   /**
    * Connect with the database
    */
@@ -167,6 +177,26 @@ export class PrismaClient<
     * ```
     */
   get comentario(): Prisma.ComentarioDelegate<ExtArgs>;
+
+  /**
+   * `prisma.usuario`: Exposes CRUD operations for the **Usuario** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Usuarios
+    * const usuarios = await prisma.usuario.findMany()
+    * ```
+    */
+  get usuario(): Prisma.UsuarioDelegate<ExtArgs>;
+
+  /**
+   * `prisma.categoria`: Exposes CRUD operations for the **Categoria** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Categorias
+    * const categorias = await prisma.categoria.findMany()
+    * ```
+    */
+  get categoria(): Prisma.CategoriaDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -225,8 +255,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.0.1
-   * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
+   * Prisma Client JS version: 6.1.0
+   * Query Engine version: 11f085a2012c0f4778414c8db2651556ee0ef959
    */
   export type PrismaVersion = {
     client: string
@@ -609,7 +639,9 @@ export namespace Prisma {
   export const ModelName: {
     Adiso: 'Adiso',
     Imagen: 'Imagen',
-    Comentario: 'Comentario'
+    Comentario: 'Comentario',
+    Usuario: 'Usuario',
+    Categoria: 'Categoria'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -625,7 +657,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "adiso" | "imagen" | "comentario"
+      modelProps: "adiso" | "imagen" | "comentario" | "usuario" | "categoria"
       txIsolationLevel: never
     }
     model: {
@@ -851,6 +883,154 @@ export namespace Prisma {
           }
         }
       }
+      Usuario: {
+        payload: Prisma.$UsuarioPayload<ExtArgs>
+        fields: Prisma.UsuarioFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UsuarioFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsuarioPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UsuarioFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsuarioPayload>
+          }
+          findFirst: {
+            args: Prisma.UsuarioFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsuarioPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UsuarioFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsuarioPayload>
+          }
+          findMany: {
+            args: Prisma.UsuarioFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsuarioPayload>[]
+          }
+          create: {
+            args: Prisma.UsuarioCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsuarioPayload>
+          }
+          createMany: {
+            args: Prisma.UsuarioCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.UsuarioDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsuarioPayload>
+          }
+          update: {
+            args: Prisma.UsuarioUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsuarioPayload>
+          }
+          deleteMany: {
+            args: Prisma.UsuarioDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UsuarioUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.UsuarioUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsuarioPayload>
+          }
+          aggregate: {
+            args: Prisma.UsuarioAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUsuario>
+          }
+          groupBy: {
+            args: Prisma.UsuarioGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UsuarioGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.UsuarioFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.UsuarioAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.UsuarioCountArgs<ExtArgs>
+            result: $Utils.Optional<UsuarioCountAggregateOutputType> | number
+          }
+        }
+      }
+      Categoria: {
+        payload: Prisma.$CategoriaPayload<ExtArgs>
+        fields: Prisma.CategoriaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategoriaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategoriaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
+          }
+          findFirst: {
+            args: Prisma.CategoriaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategoriaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
+          }
+          findMany: {
+            args: Prisma.CategoriaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>[]
+          }
+          create: {
+            args: Prisma.CategoriaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
+          }
+          createMany: {
+            args: Prisma.CategoriaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CategoriaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
+          }
+          update: {
+            args: Prisma.CategoriaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
+          }
+          deleteMany: {
+            args: Prisma.CategoriaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategoriaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CategoriaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
+          }
+          aggregate: {
+            args: Prisma.CategoriaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategoria>
+          }
+          groupBy: {
+            args: Prisma.CategoriaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoriaGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.CategoriaFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.CategoriaAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.CategoriaCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoriaCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1035,6 +1215,68 @@ export namespace Prisma {
 
 
   /**
+   * Count Type UsuarioCountOutputType
+   */
+
+  export type UsuarioCountOutputType = {
+    ads: number
+  }
+
+  export type UsuarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ads?: boolean | UsuarioCountOutputTypeCountAdsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UsuarioCountOutputType
+     */
+    select?: UsuarioCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeCountAdsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdisoWhereInput
+  }
+
+
+  /**
+   * Count Type CategoriaCountOutputType
+   */
+
+  export type CategoriaCountOutputType = {
+    ads: number
+  }
+
+  export type CategoriaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ads?: boolean | CategoriaCountOutputTypeCountAdsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CategoriaCountOutputType without action
+   */
+  export type CategoriaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoriaCountOutputType
+     */
+    select?: CategoriaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CategoriaCountOutputType without action
+   */
+  export type CategoriaCountOutputTypeCountAdsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdisoWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1051,26 +1293,22 @@ export namespace Prisma {
   }
 
   export type AdisoAvgAggregateOutputType = {
-    categoriaId: number | null
     precio: number | null
     latitud: number | null
     longitud: number | null
-    usuarioId: number | null
   }
 
   export type AdisoSumAggregateOutputType = {
-    categoriaId: number | null
     precio: number | null
     latitud: number | null
     longitud: number | null
-    usuarioId: number | null
   }
 
   export type AdisoMinAggregateOutputType = {
     id: string | null
     titulo: string | null
     descripcion: string | null
-    categoriaId: number | null
+    categoriaId: string | null
     precio: number | null
     moneda: string | null
     contacto: string | null
@@ -1079,14 +1317,14 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso | null
     expiracion: Date | null
     creadoEn: Date | null
-    usuarioId: number | null
+    usuarioId: string | null
   }
 
   export type AdisoMaxAggregateOutputType = {
     id: string | null
     titulo: string | null
     descripcion: string | null
-    categoriaId: number | null
+    categoriaId: string | null
     precio: number | null
     moneda: string | null
     contacto: string | null
@@ -1095,7 +1333,7 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso | null
     expiracion: Date | null
     creadoEn: Date | null
-    usuarioId: number | null
+    usuarioId: string | null
   }
 
   export type AdisoCountAggregateOutputType = {
@@ -1118,19 +1356,15 @@ export namespace Prisma {
 
 
   export type AdisoAvgAggregateInputType = {
-    categoriaId?: true
     precio?: true
     latitud?: true
     longitud?: true
-    usuarioId?: true
   }
 
   export type AdisoSumAggregateInputType = {
-    categoriaId?: true
     precio?: true
     latitud?: true
     longitud?: true
-    usuarioId?: true
   }
 
   export type AdisoMinAggregateInputType = {
@@ -1273,7 +1507,7 @@ export namespace Prisma {
     id: string
     titulo: string
     descripcion: string
-    categoriaId: number
+    categoriaId: string
     precio: number | null
     moneda: string | null
     contacto: string
@@ -1282,7 +1516,7 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso
     expiracion: Date | null
     creadoEn: Date
-    usuarioId: number
+    usuarioId: string
     extra: JsonValue | null
     _count: AdisoCountAggregateOutputType | null
     _avg: AdisoAvgAggregateOutputType | null
@@ -1322,6 +1556,8 @@ export namespace Prisma {
     extra?: boolean
     comentarios?: boolean | Adiso$comentariosArgs<ExtArgs>
     imagenes?: boolean | Adiso$imagenesArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    categoria?: boolean | CategoriaDefaultArgs<ExtArgs>
     _count?: boolean | AdisoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adiso"]>
 
@@ -1346,6 +1582,8 @@ export namespace Prisma {
   export type AdisoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     comentarios?: boolean | Adiso$comentariosArgs<ExtArgs>
     imagenes?: boolean | Adiso$imagenesArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    categoria?: boolean | CategoriaDefaultArgs<ExtArgs>
     _count?: boolean | AdisoCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1354,12 +1592,14 @@ export namespace Prisma {
     objects: {
       comentarios: Prisma.$ComentarioPayload<ExtArgs>[]
       imagenes: Prisma.$ImagenPayload<ExtArgs>[]
+      usuario: Prisma.$UsuarioPayload<ExtArgs>
+      categoria: Prisma.$CategoriaPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       titulo: string
       descripcion: string
-      categoriaId: number
+      categoriaId: string
       precio: number | null
       moneda: string | null
       contacto: string
@@ -1368,7 +1608,7 @@ export namespace Prisma {
       estado: $Enums.EstadoAdiso
       expiracion: Date | null
       creadoEn: Date
-      usuarioId: number
+      usuarioId: string
       extra: Prisma.JsonValue | null
     }, ExtArgs["result"]["adiso"]>
     composites: {}
@@ -1735,6 +1975,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     comentarios<T extends Adiso$comentariosArgs<ExtArgs> = {}>(args?: Subset<T, Adiso$comentariosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findMany"> | Null>
     imagenes<T extends Adiso$imagenesArgs<ExtArgs> = {}>(args?: Subset<T, Adiso$imagenesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagenPayload<ExtArgs>, T, "findMany"> | Null>
+    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    categoria<T extends CategoriaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoriaDefaultArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1767,7 +2009,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Adiso", 'String'>
     readonly titulo: FieldRef<"Adiso", 'String'>
     readonly descripcion: FieldRef<"Adiso", 'String'>
-    readonly categoriaId: FieldRef<"Adiso", 'Int'>
+    readonly categoriaId: FieldRef<"Adiso", 'String'>
     readonly precio: FieldRef<"Adiso", 'Float'>
     readonly moneda: FieldRef<"Adiso", 'String'>
     readonly contacto: FieldRef<"Adiso", 'String'>
@@ -1776,7 +2018,7 @@ export namespace Prisma {
     readonly estado: FieldRef<"Adiso", 'EstadoAdiso'>
     readonly expiracion: FieldRef<"Adiso", 'DateTime'>
     readonly creadoEn: FieldRef<"Adiso", 'DateTime'>
-    readonly usuarioId: FieldRef<"Adiso", 'Int'>
+    readonly usuarioId: FieldRef<"Adiso", 'String'>
     readonly extra: FieldRef<"Adiso", 'Json'>
   }
     
@@ -3079,12 +3321,10 @@ export namespace Prisma {
 
   export type ComentarioAvgAggregateOutputType = {
     calificacion: number | null
-    usuarioId: number | null
   }
 
   export type ComentarioSumAggregateOutputType = {
     calificacion: number | null
-    usuarioId: number | null
   }
 
   export type ComentarioMinAggregateOutputType = {
@@ -3092,7 +3332,7 @@ export namespace Prisma {
     contenido: string | null
     calificacion: number | null
     creadoEn: Date | null
-    usuarioId: number | null
+    usuarioId: string | null
     adisoId: string | null
   }
 
@@ -3101,7 +3341,7 @@ export namespace Prisma {
     contenido: string | null
     calificacion: number | null
     creadoEn: Date | null
-    usuarioId: number | null
+    usuarioId: string | null
     adisoId: string | null
   }
 
@@ -3118,12 +3358,10 @@ export namespace Prisma {
 
   export type ComentarioAvgAggregateInputType = {
     calificacion?: true
-    usuarioId?: true
   }
 
   export type ComentarioSumAggregateInputType = {
     calificacion?: true
-    usuarioId?: true
   }
 
   export type ComentarioMinAggregateInputType = {
@@ -3245,7 +3483,7 @@ export namespace Prisma {
     contenido: string
     calificacion: number | null
     creadoEn: Date
-    usuarioId: number
+    usuarioId: string
     adisoId: string
     _count: ComentarioCountAggregateOutputType | null
     _avg: ComentarioAvgAggregateOutputType | null
@@ -3302,7 +3540,7 @@ export namespace Prisma {
       contenido: string
       calificacion: number | null
       creadoEn: Date
-      usuarioId: number
+      usuarioId: string
       adisoId: string
     }, ExtArgs["result"]["comentario"]>
     composites: {}
@@ -3701,7 +3939,7 @@ export namespace Prisma {
     readonly contenido: FieldRef<"Comentario", 'String'>
     readonly calificacion: FieldRef<"Comentario", 'Int'>
     readonly creadoEn: FieldRef<"Comentario", 'DateTime'>
-    readonly usuarioId: FieldRef<"Comentario", 'Int'>
+    readonly usuarioId: FieldRef<"Comentario", 'String'>
     readonly adisoId: FieldRef<"Comentario", 'String'>
   }
     
@@ -4044,6 +4282,1842 @@ export namespace Prisma {
 
 
   /**
+   * Model Usuario
+   */
+
+  export type AggregateUsuario = {
+    _count: UsuarioCountAggregateOutputType | null
+    _min: UsuarioMinAggregateOutputType | null
+    _max: UsuarioMaxAggregateOutputType | null
+  }
+
+  export type UsuarioMinAggregateOutputType = {
+    id: string | null
+    nombre: string | null
+  }
+
+  export type UsuarioMaxAggregateOutputType = {
+    id: string | null
+    nombre: string | null
+  }
+
+  export type UsuarioCountAggregateOutputType = {
+    id: number
+    nombre: number
+    _all: number
+  }
+
+
+  export type UsuarioMinAggregateInputType = {
+    id?: true
+    nombre?: true
+  }
+
+  export type UsuarioMaxAggregateInputType = {
+    id?: true
+    nombre?: true
+  }
+
+  export type UsuarioCountAggregateInputType = {
+    id?: true
+    nombre?: true
+    _all?: true
+  }
+
+  export type UsuarioAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Usuario to aggregate.
+     */
+    where?: UsuarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Usuarios to fetch.
+     */
+    orderBy?: UsuarioOrderByWithRelationInput | UsuarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UsuarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Usuarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Usuarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Usuarios
+    **/
+    _count?: true | UsuarioCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UsuarioMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UsuarioMaxAggregateInputType
+  }
+
+  export type GetUsuarioAggregateType<T extends UsuarioAggregateArgs> = {
+        [P in keyof T & keyof AggregateUsuario]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUsuario[P]>
+      : GetScalarType<T[P], AggregateUsuario[P]>
+  }
+
+
+
+
+  export type UsuarioGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UsuarioWhereInput
+    orderBy?: UsuarioOrderByWithAggregationInput | UsuarioOrderByWithAggregationInput[]
+    by: UsuarioScalarFieldEnum[] | UsuarioScalarFieldEnum
+    having?: UsuarioScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UsuarioCountAggregateInputType | true
+    _min?: UsuarioMinAggregateInputType
+    _max?: UsuarioMaxAggregateInputType
+  }
+
+  export type UsuarioGroupByOutputType = {
+    id: string
+    nombre: string
+    _count: UsuarioCountAggregateOutputType | null
+    _min: UsuarioMinAggregateOutputType | null
+    _max: UsuarioMaxAggregateOutputType | null
+  }
+
+  type GetUsuarioGroupByPayload<T extends UsuarioGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UsuarioGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UsuarioGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UsuarioGroupByOutputType[P]>
+            : GetScalarType<T[P], UsuarioGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UsuarioSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nombre?: boolean
+    ads?: boolean | Usuario$adsArgs<ExtArgs>
+    _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["usuario"]>
+
+
+  export type UsuarioSelectScalar = {
+    id?: boolean
+    nombre?: boolean
+  }
+
+  export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ads?: boolean | Usuario$adsArgs<ExtArgs>
+    _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $UsuarioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Usuario"
+    objects: {
+      ads: Prisma.$AdisoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      nombre: string
+    }, ExtArgs["result"]["usuario"]>
+    composites: {}
+  }
+
+  type UsuarioGetPayload<S extends boolean | null | undefined | UsuarioDefaultArgs> = $Result.GetResult<Prisma.$UsuarioPayload, S>
+
+  type UsuarioCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UsuarioFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: UsuarioCountAggregateInputType | true
+    }
+
+  export interface UsuarioDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Usuario'], meta: { name: 'Usuario' } }
+    /**
+     * Find zero or one Usuario that matches the filter.
+     * @param {UsuarioFindUniqueArgs} args - Arguments to find a Usuario
+     * @example
+     * // Get one Usuario
+     * const usuario = await prisma.usuario.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UsuarioFindUniqueArgs>(args: SelectSubset<T, UsuarioFindUniqueArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Usuario that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {UsuarioFindUniqueOrThrowArgs} args - Arguments to find a Usuario
+     * @example
+     * // Get one Usuario
+     * const usuario = await prisma.usuario.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UsuarioFindUniqueOrThrowArgs>(args: SelectSubset<T, UsuarioFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Usuario that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsuarioFindFirstArgs} args - Arguments to find a Usuario
+     * @example
+     * // Get one Usuario
+     * const usuario = await prisma.usuario.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UsuarioFindFirstArgs>(args?: SelectSubset<T, UsuarioFindFirstArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Usuario that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsuarioFindFirstOrThrowArgs} args - Arguments to find a Usuario
+     * @example
+     * // Get one Usuario
+     * const usuario = await prisma.usuario.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UsuarioFindFirstOrThrowArgs>(args?: SelectSubset<T, UsuarioFindFirstOrThrowArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Usuarios that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsuarioFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Usuarios
+     * const usuarios = await prisma.usuario.findMany()
+     * 
+     * // Get first 10 Usuarios
+     * const usuarios = await prisma.usuario.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const usuarioWithIdOnly = await prisma.usuario.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UsuarioFindManyArgs>(args?: SelectSubset<T, UsuarioFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Usuario.
+     * @param {UsuarioCreateArgs} args - Arguments to create a Usuario.
+     * @example
+     * // Create one Usuario
+     * const Usuario = await prisma.usuario.create({
+     *   data: {
+     *     // ... data to create a Usuario
+     *   }
+     * })
+     * 
+     */
+    create<T extends UsuarioCreateArgs>(args: SelectSubset<T, UsuarioCreateArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Usuarios.
+     * @param {UsuarioCreateManyArgs} args - Arguments to create many Usuarios.
+     * @example
+     * // Create many Usuarios
+     * const usuario = await prisma.usuario.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UsuarioCreateManyArgs>(args?: SelectSubset<T, UsuarioCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Usuario.
+     * @param {UsuarioDeleteArgs} args - Arguments to delete one Usuario.
+     * @example
+     * // Delete one Usuario
+     * const Usuario = await prisma.usuario.delete({
+     *   where: {
+     *     // ... filter to delete one Usuario
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UsuarioDeleteArgs>(args: SelectSubset<T, UsuarioDeleteArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Usuario.
+     * @param {UsuarioUpdateArgs} args - Arguments to update one Usuario.
+     * @example
+     * // Update one Usuario
+     * const usuario = await prisma.usuario.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UsuarioUpdateArgs>(args: SelectSubset<T, UsuarioUpdateArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Usuarios.
+     * @param {UsuarioDeleteManyArgs} args - Arguments to filter Usuarios to delete.
+     * @example
+     * // Delete a few Usuarios
+     * const { count } = await prisma.usuario.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UsuarioDeleteManyArgs>(args?: SelectSubset<T, UsuarioDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Usuarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsuarioUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Usuarios
+     * const usuario = await prisma.usuario.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UsuarioUpdateManyArgs>(args: SelectSubset<T, UsuarioUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Usuario.
+     * @param {UsuarioUpsertArgs} args - Arguments to update or create a Usuario.
+     * @example
+     * // Update or create a Usuario
+     * const usuario = await prisma.usuario.upsert({
+     *   create: {
+     *     // ... data to create a Usuario
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Usuario we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UsuarioUpsertArgs>(args: SelectSubset<T, UsuarioUpsertArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+    /**
+     * Find zero or more Usuarios that matches the filter.
+     * @param {UsuarioFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const usuario = await prisma.usuario.findRaw({
+     *   filter: { age: { $gt: 25 } } 
+     * })
+     */
+    findRaw(args?: UsuarioFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a Usuario.
+     * @param {UsuarioAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const usuario = await prisma.usuario.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: UsuarioAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of Usuarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsuarioCountArgs} args - Arguments to filter Usuarios to count.
+     * @example
+     * // Count the number of Usuarios
+     * const count = await prisma.usuario.count({
+     *   where: {
+     *     // ... the filter for the Usuarios we want to count
+     *   }
+     * })
+    **/
+    count<T extends UsuarioCountArgs>(
+      args?: Subset<T, UsuarioCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UsuarioCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Usuario.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsuarioAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UsuarioAggregateArgs>(args: Subset<T, UsuarioAggregateArgs>): Prisma.PrismaPromise<GetUsuarioAggregateType<T>>
+
+    /**
+     * Group by Usuario.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsuarioGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UsuarioGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UsuarioGroupByArgs['orderBy'] }
+        : { orderBy?: UsuarioGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UsuarioGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsuarioGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Usuario model
+   */
+  readonly fields: UsuarioFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Usuario.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ads<T extends Usuario$adsArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$adsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdisoPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Usuario model
+   */ 
+  interface UsuarioFieldRefs {
+    readonly id: FieldRef<"Usuario", 'String'>
+    readonly nombre: FieldRef<"Usuario", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Usuario findUnique
+   */
+  export type UsuarioFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Usuario to fetch.
+     */
+    where: UsuarioWhereUniqueInput
+  }
+
+  /**
+   * Usuario findUniqueOrThrow
+   */
+  export type UsuarioFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Usuario to fetch.
+     */
+    where: UsuarioWhereUniqueInput
+  }
+
+  /**
+   * Usuario findFirst
+   */
+  export type UsuarioFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Usuario to fetch.
+     */
+    where?: UsuarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Usuarios to fetch.
+     */
+    orderBy?: UsuarioOrderByWithRelationInput | UsuarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Usuarios.
+     */
+    cursor?: UsuarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Usuarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Usuarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Usuarios.
+     */
+    distinct?: UsuarioScalarFieldEnum | UsuarioScalarFieldEnum[]
+  }
+
+  /**
+   * Usuario findFirstOrThrow
+   */
+  export type UsuarioFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Usuario to fetch.
+     */
+    where?: UsuarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Usuarios to fetch.
+     */
+    orderBy?: UsuarioOrderByWithRelationInput | UsuarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Usuarios.
+     */
+    cursor?: UsuarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Usuarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Usuarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Usuarios.
+     */
+    distinct?: UsuarioScalarFieldEnum | UsuarioScalarFieldEnum[]
+  }
+
+  /**
+   * Usuario findMany
+   */
+  export type UsuarioFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Usuarios to fetch.
+     */
+    where?: UsuarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Usuarios to fetch.
+     */
+    orderBy?: UsuarioOrderByWithRelationInput | UsuarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Usuarios.
+     */
+    cursor?: UsuarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Usuarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Usuarios.
+     */
+    skip?: number
+    distinct?: UsuarioScalarFieldEnum | UsuarioScalarFieldEnum[]
+  }
+
+  /**
+   * Usuario create
+   */
+  export type UsuarioCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Usuario.
+     */
+    data: XOR<UsuarioCreateInput, UsuarioUncheckedCreateInput>
+  }
+
+  /**
+   * Usuario createMany
+   */
+  export type UsuarioCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Usuarios.
+     */
+    data: UsuarioCreateManyInput | UsuarioCreateManyInput[]
+  }
+
+  /**
+   * Usuario update
+   */
+  export type UsuarioUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Usuario.
+     */
+    data: XOR<UsuarioUpdateInput, UsuarioUncheckedUpdateInput>
+    /**
+     * Choose, which Usuario to update.
+     */
+    where: UsuarioWhereUniqueInput
+  }
+
+  /**
+   * Usuario updateMany
+   */
+  export type UsuarioUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Usuarios.
+     */
+    data: XOR<UsuarioUpdateManyMutationInput, UsuarioUncheckedUpdateManyInput>
+    /**
+     * Filter which Usuarios to update
+     */
+    where?: UsuarioWhereInput
+  }
+
+  /**
+   * Usuario upsert
+   */
+  export type UsuarioUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Usuario to update in case it exists.
+     */
+    where: UsuarioWhereUniqueInput
+    /**
+     * In case the Usuario found by the `where` argument doesn't exist, create a new Usuario with this data.
+     */
+    create: XOR<UsuarioCreateInput, UsuarioUncheckedCreateInput>
+    /**
+     * In case the Usuario was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UsuarioUpdateInput, UsuarioUncheckedUpdateInput>
+  }
+
+  /**
+   * Usuario delete
+   */
+  export type UsuarioDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
+     * Filter which Usuario to delete.
+     */
+    where: UsuarioWhereUniqueInput
+  }
+
+  /**
+   * Usuario deleteMany
+   */
+  export type UsuarioDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Usuarios to delete
+     */
+    where?: UsuarioWhereInput
+  }
+
+  /**
+   * Usuario findRaw
+   */
+  export type UsuarioFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * Usuario aggregateRaw
+   */
+  export type UsuarioAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * Usuario.ads
+   */
+  export type Usuario$adsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Adiso
+     */
+    select?: AdisoSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdisoInclude<ExtArgs> | null
+    where?: AdisoWhereInput
+    orderBy?: AdisoOrderByWithRelationInput | AdisoOrderByWithRelationInput[]
+    cursor?: AdisoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdisoScalarFieldEnum | AdisoScalarFieldEnum[]
+  }
+
+  /**
+   * Usuario without action
+   */
+  export type UsuarioDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Categoria
+   */
+
+  export type AggregateCategoria = {
+    _count: CategoriaCountAggregateOutputType | null
+    _min: CategoriaMinAggregateOutputType | null
+    _max: CategoriaMaxAggregateOutputType | null
+  }
+
+  export type CategoriaMinAggregateOutputType = {
+    id: string | null
+    nombre: string | null
+  }
+
+  export type CategoriaMaxAggregateOutputType = {
+    id: string | null
+    nombre: string | null
+  }
+
+  export type CategoriaCountAggregateOutputType = {
+    id: number
+    nombre: number
+    _all: number
+  }
+
+
+  export type CategoriaMinAggregateInputType = {
+    id?: true
+    nombre?: true
+  }
+
+  export type CategoriaMaxAggregateInputType = {
+    id?: true
+    nombre?: true
+  }
+
+  export type CategoriaCountAggregateInputType = {
+    id?: true
+    nombre?: true
+    _all?: true
+  }
+
+  export type CategoriaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Categoria to aggregate.
+     */
+    where?: CategoriaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categorias to fetch.
+     */
+    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategoriaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categorias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categorias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Categorias
+    **/
+    _count?: true | CategoriaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategoriaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategoriaMaxAggregateInputType
+  }
+
+  export type GetCategoriaAggregateType<T extends CategoriaAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategoria]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategoria[P]>
+      : GetScalarType<T[P], AggregateCategoria[P]>
+  }
+
+
+
+
+  export type CategoriaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoriaWhereInput
+    orderBy?: CategoriaOrderByWithAggregationInput | CategoriaOrderByWithAggregationInput[]
+    by: CategoriaScalarFieldEnum[] | CategoriaScalarFieldEnum
+    having?: CategoriaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategoriaCountAggregateInputType | true
+    _min?: CategoriaMinAggregateInputType
+    _max?: CategoriaMaxAggregateInputType
+  }
+
+  export type CategoriaGroupByOutputType = {
+    id: string
+    nombre: string
+    _count: CategoriaCountAggregateOutputType | null
+    _min: CategoriaMinAggregateOutputType | null
+    _max: CategoriaMaxAggregateOutputType | null
+  }
+
+  type GetCategoriaGroupByPayload<T extends CategoriaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategoriaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategoriaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategoriaGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoriaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategoriaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nombre?: boolean
+    ads?: boolean | Categoria$adsArgs<ExtArgs>
+    _count?: boolean | CategoriaCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["categoria"]>
+
+
+  export type CategoriaSelectScalar = {
+    id?: boolean
+    nombre?: boolean
+  }
+
+  export type CategoriaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ads?: boolean | Categoria$adsArgs<ExtArgs>
+    _count?: boolean | CategoriaCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $CategoriaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Categoria"
+    objects: {
+      ads: Prisma.$AdisoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      nombre: string
+    }, ExtArgs["result"]["categoria"]>
+    composites: {}
+  }
+
+  type CategoriaGetPayload<S extends boolean | null | undefined | CategoriaDefaultArgs> = $Result.GetResult<Prisma.$CategoriaPayload, S>
+
+  type CategoriaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CategoriaFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CategoriaCountAggregateInputType | true
+    }
+
+  export interface CategoriaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Categoria'], meta: { name: 'Categoria' } }
+    /**
+     * Find zero or one Categoria that matches the filter.
+     * @param {CategoriaFindUniqueArgs} args - Arguments to find a Categoria
+     * @example
+     * // Get one Categoria
+     * const categoria = await prisma.categoria.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategoriaFindUniqueArgs>(args: SelectSubset<T, CategoriaFindUniqueArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Categoria that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {CategoriaFindUniqueOrThrowArgs} args - Arguments to find a Categoria
+     * @example
+     * // Get one Categoria
+     * const categoria = await prisma.categoria.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategoriaFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoriaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Categoria that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoriaFindFirstArgs} args - Arguments to find a Categoria
+     * @example
+     * // Get one Categoria
+     * const categoria = await prisma.categoria.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategoriaFindFirstArgs>(args?: SelectSubset<T, CategoriaFindFirstArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Categoria that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoriaFindFirstOrThrowArgs} args - Arguments to find a Categoria
+     * @example
+     * // Get one Categoria
+     * const categoria = await prisma.categoria.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategoriaFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoriaFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Categorias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoriaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Categorias
+     * const categorias = await prisma.categoria.findMany()
+     * 
+     * // Get first 10 Categorias
+     * const categorias = await prisma.categoria.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const categoriaWithIdOnly = await prisma.categoria.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CategoriaFindManyArgs>(args?: SelectSubset<T, CategoriaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Categoria.
+     * @param {CategoriaCreateArgs} args - Arguments to create a Categoria.
+     * @example
+     * // Create one Categoria
+     * const Categoria = await prisma.categoria.create({
+     *   data: {
+     *     // ... data to create a Categoria
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategoriaCreateArgs>(args: SelectSubset<T, CategoriaCreateArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Categorias.
+     * @param {CategoriaCreateManyArgs} args - Arguments to create many Categorias.
+     * @example
+     * // Create many Categorias
+     * const categoria = await prisma.categoria.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategoriaCreateManyArgs>(args?: SelectSubset<T, CategoriaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Categoria.
+     * @param {CategoriaDeleteArgs} args - Arguments to delete one Categoria.
+     * @example
+     * // Delete one Categoria
+     * const Categoria = await prisma.categoria.delete({
+     *   where: {
+     *     // ... filter to delete one Categoria
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategoriaDeleteArgs>(args: SelectSubset<T, CategoriaDeleteArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Categoria.
+     * @param {CategoriaUpdateArgs} args - Arguments to update one Categoria.
+     * @example
+     * // Update one Categoria
+     * const categoria = await prisma.categoria.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategoriaUpdateArgs>(args: SelectSubset<T, CategoriaUpdateArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Categorias.
+     * @param {CategoriaDeleteManyArgs} args - Arguments to filter Categorias to delete.
+     * @example
+     * // Delete a few Categorias
+     * const { count } = await prisma.categoria.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategoriaDeleteManyArgs>(args?: SelectSubset<T, CategoriaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categorias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoriaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Categorias
+     * const categoria = await prisma.categoria.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategoriaUpdateManyArgs>(args: SelectSubset<T, CategoriaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Categoria.
+     * @param {CategoriaUpsertArgs} args - Arguments to update or create a Categoria.
+     * @example
+     * // Update or create a Categoria
+     * const categoria = await prisma.categoria.upsert({
+     *   create: {
+     *     // ... data to create a Categoria
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Categoria we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategoriaUpsertArgs>(args: SelectSubset<T, CategoriaUpsertArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+    /**
+     * Find zero or more Categorias that matches the filter.
+     * @param {CategoriaFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const categoria = await prisma.categoria.findRaw({
+     *   filter: { age: { $gt: 25 } } 
+     * })
+     */
+    findRaw(args?: CategoriaFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a Categoria.
+     * @param {CategoriaAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const categoria = await prisma.categoria.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: CategoriaAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of Categorias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoriaCountArgs} args - Arguments to filter Categorias to count.
+     * @example
+     * // Count the number of Categorias
+     * const count = await prisma.categoria.count({
+     *   where: {
+     *     // ... the filter for the Categorias we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategoriaCountArgs>(
+      args?: Subset<T, CategoriaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategoriaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Categoria.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoriaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategoriaAggregateArgs>(args: Subset<T, CategoriaAggregateArgs>): Prisma.PrismaPromise<GetCategoriaAggregateType<T>>
+
+    /**
+     * Group by Categoria.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoriaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategoriaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategoriaGroupByArgs['orderBy'] }
+        : { orderBy?: CategoriaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategoriaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoriaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Categoria model
+   */
+  readonly fields: CategoriaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Categoria.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategoriaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ads<T extends Categoria$adsArgs<ExtArgs> = {}>(args?: Subset<T, Categoria$adsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdisoPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Categoria model
+   */ 
+  interface CategoriaFieldRefs {
+    readonly id: FieldRef<"Categoria", 'String'>
+    readonly nombre: FieldRef<"Categoria", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Categoria findUnique
+   */
+  export type CategoriaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Categoria to fetch.
+     */
+    where: CategoriaWhereUniqueInput
+  }
+
+  /**
+   * Categoria findUniqueOrThrow
+   */
+  export type CategoriaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Categoria to fetch.
+     */
+    where: CategoriaWhereUniqueInput
+  }
+
+  /**
+   * Categoria findFirst
+   */
+  export type CategoriaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Categoria to fetch.
+     */
+    where?: CategoriaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categorias to fetch.
+     */
+    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categorias.
+     */
+    cursor?: CategoriaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categorias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categorias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categorias.
+     */
+    distinct?: CategoriaScalarFieldEnum | CategoriaScalarFieldEnum[]
+  }
+
+  /**
+   * Categoria findFirstOrThrow
+   */
+  export type CategoriaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Categoria to fetch.
+     */
+    where?: CategoriaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categorias to fetch.
+     */
+    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categorias.
+     */
+    cursor?: CategoriaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categorias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categorias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categorias.
+     */
+    distinct?: CategoriaScalarFieldEnum | CategoriaScalarFieldEnum[]
+  }
+
+  /**
+   * Categoria findMany
+   */
+  export type CategoriaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Categorias to fetch.
+     */
+    where?: CategoriaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categorias to fetch.
+     */
+    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Categorias.
+     */
+    cursor?: CategoriaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categorias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categorias.
+     */
+    skip?: number
+    distinct?: CategoriaScalarFieldEnum | CategoriaScalarFieldEnum[]
+  }
+
+  /**
+   * Categoria create
+   */
+  export type CategoriaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Categoria.
+     */
+    data: XOR<CategoriaCreateInput, CategoriaUncheckedCreateInput>
+  }
+
+  /**
+   * Categoria createMany
+   */
+  export type CategoriaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Categorias.
+     */
+    data: CategoriaCreateManyInput | CategoriaCreateManyInput[]
+  }
+
+  /**
+   * Categoria update
+   */
+  export type CategoriaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Categoria.
+     */
+    data: XOR<CategoriaUpdateInput, CategoriaUncheckedUpdateInput>
+    /**
+     * Choose, which Categoria to update.
+     */
+    where: CategoriaWhereUniqueInput
+  }
+
+  /**
+   * Categoria updateMany
+   */
+  export type CategoriaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Categorias.
+     */
+    data: XOR<CategoriaUpdateManyMutationInput, CategoriaUncheckedUpdateManyInput>
+    /**
+     * Filter which Categorias to update
+     */
+    where?: CategoriaWhereInput
+  }
+
+  /**
+   * Categoria upsert
+   */
+  export type CategoriaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Categoria to update in case it exists.
+     */
+    where: CategoriaWhereUniqueInput
+    /**
+     * In case the Categoria found by the `where` argument doesn't exist, create a new Categoria with this data.
+     */
+    create: XOR<CategoriaCreateInput, CategoriaUncheckedCreateInput>
+    /**
+     * In case the Categoria was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategoriaUpdateInput, CategoriaUncheckedUpdateInput>
+  }
+
+  /**
+   * Categoria delete
+   */
+  export type CategoriaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+    /**
+     * Filter which Categoria to delete.
+     */
+    where: CategoriaWhereUniqueInput
+  }
+
+  /**
+   * Categoria deleteMany
+   */
+  export type CategoriaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Categorias to delete
+     */
+    where?: CategoriaWhereInput
+  }
+
+  /**
+   * Categoria findRaw
+   */
+  export type CategoriaFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * Categoria aggregateRaw
+   */
+  export type CategoriaAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * Categoria.ads
+   */
+  export type Categoria$adsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Adiso
+     */
+    select?: AdisoSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdisoInclude<ExtArgs> | null
+    where?: AdisoWhereInput
+    orderBy?: AdisoOrderByWithRelationInput | AdisoOrderByWithRelationInput[]
+    cursor?: AdisoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdisoScalarFieldEnum | AdisoScalarFieldEnum[]
+  }
+
+  /**
+   * Categoria without action
+   */
+  export type CategoriaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Categoria
+     */
+    select?: CategoriaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoriaInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4088,6 +6162,22 @@ export namespace Prisma {
   export type ComentarioScalarFieldEnum = (typeof ComentarioScalarFieldEnum)[keyof typeof ComentarioScalarFieldEnum]
 
 
+  export const UsuarioScalarFieldEnum: {
+    id: 'id',
+    nombre: 'nombre'
+  };
+
+  export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
+
+
+  export const CategoriaScalarFieldEnum: {
+    id: 'id',
+    nombre: 'nombre'
+  };
+
+  export type CategoriaScalarFieldEnum = (typeof CategoriaScalarFieldEnum)[keyof typeof CategoriaScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -4120,20 +6210,6 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -4184,6 +6260,20 @@ export namespace Prisma {
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
   /**
    * Deep Input Types
    */
@@ -4196,7 +6286,7 @@ export namespace Prisma {
     id?: StringFilter<"Adiso"> | string
     titulo?: StringFilter<"Adiso"> | string
     descripcion?: StringFilter<"Adiso"> | string
-    categoriaId?: IntFilter<"Adiso"> | number
+    categoriaId?: StringFilter<"Adiso"> | string
     precio?: FloatNullableFilter<"Adiso"> | number | null
     moneda?: StringNullableFilter<"Adiso"> | string | null
     contacto?: StringFilter<"Adiso"> | string
@@ -4205,10 +6295,12 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFilter<"Adiso"> | $Enums.EstadoAdiso
     expiracion?: DateTimeNullableFilter<"Adiso"> | Date | string | null
     creadoEn?: DateTimeFilter<"Adiso"> | Date | string
-    usuarioId?: IntFilter<"Adiso"> | number
+    usuarioId?: StringFilter<"Adiso"> | string
     extra?: JsonNullableFilter<"Adiso">
     comentarios?: ComentarioListRelationFilter
     imagenes?: ImagenListRelationFilter
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    categoria?: XOR<CategoriaScalarRelationFilter, CategoriaWhereInput>
   }
 
   export type AdisoOrderByWithRelationInput = {
@@ -4228,6 +6320,8 @@ export namespace Prisma {
     extra?: SortOrder
     comentarios?: ComentarioOrderByRelationAggregateInput
     imagenes?: ImagenOrderByRelationAggregateInput
+    usuario?: UsuarioOrderByWithRelationInput
+    categoria?: CategoriaOrderByWithRelationInput
   }
 
   export type AdisoWhereUniqueInput = Prisma.AtLeast<{
@@ -4237,7 +6331,7 @@ export namespace Prisma {
     NOT?: AdisoWhereInput | AdisoWhereInput[]
     titulo?: StringFilter<"Adiso"> | string
     descripcion?: StringFilter<"Adiso"> | string
-    categoriaId?: IntFilter<"Adiso"> | number
+    categoriaId?: StringFilter<"Adiso"> | string
     precio?: FloatNullableFilter<"Adiso"> | number | null
     moneda?: StringNullableFilter<"Adiso"> | string | null
     contacto?: StringFilter<"Adiso"> | string
@@ -4246,10 +6340,12 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFilter<"Adiso"> | $Enums.EstadoAdiso
     expiracion?: DateTimeNullableFilter<"Adiso"> | Date | string | null
     creadoEn?: DateTimeFilter<"Adiso"> | Date | string
-    usuarioId?: IntFilter<"Adiso"> | number
+    usuarioId?: StringFilter<"Adiso"> | string
     extra?: JsonNullableFilter<"Adiso">
     comentarios?: ComentarioListRelationFilter
     imagenes?: ImagenListRelationFilter
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    categoria?: XOR<CategoriaScalarRelationFilter, CategoriaWhereInput>
   }, "id">
 
   export type AdisoOrderByWithAggregationInput = {
@@ -4281,7 +6377,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Adiso"> | string
     titulo?: StringWithAggregatesFilter<"Adiso"> | string
     descripcion?: StringWithAggregatesFilter<"Adiso"> | string
-    categoriaId?: IntWithAggregatesFilter<"Adiso"> | number
+    categoriaId?: StringWithAggregatesFilter<"Adiso"> | string
     precio?: FloatNullableWithAggregatesFilter<"Adiso"> | number | null
     moneda?: StringNullableWithAggregatesFilter<"Adiso"> | string | null
     contacto?: StringWithAggregatesFilter<"Adiso"> | string
@@ -4290,7 +6386,7 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoWithAggregatesFilter<"Adiso"> | $Enums.EstadoAdiso
     expiracion?: DateTimeNullableWithAggregatesFilter<"Adiso"> | Date | string | null
     creadoEn?: DateTimeWithAggregatesFilter<"Adiso"> | Date | string
-    usuarioId?: IntWithAggregatesFilter<"Adiso"> | number
+    usuarioId?: StringWithAggregatesFilter<"Adiso"> | string
     extra?: JsonNullableWithAggregatesFilter<"Adiso">
   }
 
@@ -4347,7 +6443,7 @@ export namespace Prisma {
     contenido?: StringFilter<"Comentario"> | string
     calificacion?: IntNullableFilter<"Comentario"> | number | null
     creadoEn?: DateTimeFilter<"Comentario"> | Date | string
-    usuarioId?: IntFilter<"Comentario"> | number
+    usuarioId?: StringFilter<"Comentario"> | string
     adisoId?: StringFilter<"Comentario"> | string
     adiso?: XOR<AdisoScalarRelationFilter, AdisoWhereInput>
   }
@@ -4370,7 +6466,7 @@ export namespace Prisma {
     contenido?: StringFilter<"Comentario"> | string
     calificacion?: IntNullableFilter<"Comentario"> | number | null
     creadoEn?: DateTimeFilter<"Comentario"> | Date | string
-    usuarioId?: IntFilter<"Comentario"> | number
+    usuarioId?: StringFilter<"Comentario"> | string
     adisoId?: StringFilter<"Comentario"> | string
     adiso?: XOR<AdisoScalarRelationFilter, AdisoWhereInput>
   }, "id">
@@ -4397,15 +6493,94 @@ export namespace Prisma {
     contenido?: StringWithAggregatesFilter<"Comentario"> | string
     calificacion?: IntNullableWithAggregatesFilter<"Comentario"> | number | null
     creadoEn?: DateTimeWithAggregatesFilter<"Comentario"> | Date | string
-    usuarioId?: IntWithAggregatesFilter<"Comentario"> | number
+    usuarioId?: StringWithAggregatesFilter<"Comentario"> | string
     adisoId?: StringWithAggregatesFilter<"Comentario"> | string
+  }
+
+  export type UsuarioWhereInput = {
+    AND?: UsuarioWhereInput | UsuarioWhereInput[]
+    OR?: UsuarioWhereInput[]
+    NOT?: UsuarioWhereInput | UsuarioWhereInput[]
+    id?: StringFilter<"Usuario"> | string
+    nombre?: StringFilter<"Usuario"> | string
+    ads?: AdisoListRelationFilter
+  }
+
+  export type UsuarioOrderByWithRelationInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+    ads?: AdisoOrderByRelationAggregateInput
+  }
+
+  export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: UsuarioWhereInput | UsuarioWhereInput[]
+    OR?: UsuarioWhereInput[]
+    NOT?: UsuarioWhereInput | UsuarioWhereInput[]
+    nombre?: StringFilter<"Usuario"> | string
+    ads?: AdisoListRelationFilter
+  }, "id">
+
+  export type UsuarioOrderByWithAggregationInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+    _count?: UsuarioCountOrderByAggregateInput
+    _max?: UsuarioMaxOrderByAggregateInput
+    _min?: UsuarioMinOrderByAggregateInput
+  }
+
+  export type UsuarioScalarWhereWithAggregatesInput = {
+    AND?: UsuarioScalarWhereWithAggregatesInput | UsuarioScalarWhereWithAggregatesInput[]
+    OR?: UsuarioScalarWhereWithAggregatesInput[]
+    NOT?: UsuarioScalarWhereWithAggregatesInput | UsuarioScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Usuario"> | string
+    nombre?: StringWithAggregatesFilter<"Usuario"> | string
+  }
+
+  export type CategoriaWhereInput = {
+    AND?: CategoriaWhereInput | CategoriaWhereInput[]
+    OR?: CategoriaWhereInput[]
+    NOT?: CategoriaWhereInput | CategoriaWhereInput[]
+    id?: StringFilter<"Categoria"> | string
+    nombre?: StringFilter<"Categoria"> | string
+    ads?: AdisoListRelationFilter
+  }
+
+  export type CategoriaOrderByWithRelationInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+    ads?: AdisoOrderByRelationAggregateInput
+  }
+
+  export type CategoriaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CategoriaWhereInput | CategoriaWhereInput[]
+    OR?: CategoriaWhereInput[]
+    NOT?: CategoriaWhereInput | CategoriaWhereInput[]
+    nombre?: StringFilter<"Categoria"> | string
+    ads?: AdisoListRelationFilter
+  }, "id">
+
+  export type CategoriaOrderByWithAggregationInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+    _count?: CategoriaCountOrderByAggregateInput
+    _max?: CategoriaMaxOrderByAggregateInput
+    _min?: CategoriaMinOrderByAggregateInput
+  }
+
+  export type CategoriaScalarWhereWithAggregatesInput = {
+    AND?: CategoriaScalarWhereWithAggregatesInput | CategoriaScalarWhereWithAggregatesInput[]
+    OR?: CategoriaScalarWhereWithAggregatesInput[]
+    NOT?: CategoriaScalarWhereWithAggregatesInput | CategoriaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Categoria"> | string
+    nombre?: StringWithAggregatesFilter<"Categoria"> | string
   }
 
   export type AdisoCreateInput = {
     id?: string
     titulo: string
     descripcion: string
-    categoriaId: number
     precio?: number | null
     moneda?: string | null
     contacto: string
@@ -4414,17 +6589,18 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso
     expiracion?: Date | string | null
     creadoEn?: Date | string
-    usuarioId: number
     extra?: InputJsonValue | null
     comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
     imagenes?: ImagenCreateNestedManyWithoutAdisoInput
+    usuario: UsuarioCreateNestedOneWithoutAdsInput
+    categoria: CategoriaCreateNestedOneWithoutAdsInput
   }
 
   export type AdisoUncheckedCreateInput = {
     id?: string
     titulo: string
     descripcion: string
-    categoriaId: number
+    categoriaId: string
     precio?: number | null
     moneda?: string | null
     contacto: string
@@ -4433,7 +6609,7 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso
     expiracion?: Date | string | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
     extra?: InputJsonValue | null
     comentarios?: ComentarioUncheckedCreateNestedManyWithoutAdisoInput
     imagenes?: ImagenUncheckedCreateNestedManyWithoutAdisoInput
@@ -4442,7 +6618,6 @@ export namespace Prisma {
   export type AdisoUpdateInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
-    categoriaId?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
     moneda?: NullableStringFieldUpdateOperationsInput | string | null
     contacto?: StringFieldUpdateOperationsInput | string
@@ -4451,16 +6626,17 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
     extra?: InputJsonValue | InputJsonValue | null
     comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
     imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutAdsNestedInput
+    categoria?: CategoriaUpdateOneRequiredWithoutAdsNestedInput
   }
 
   export type AdisoUncheckedUpdateInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
-    categoriaId?: IntFieldUpdateOperationsInput | number
+    categoriaId?: StringFieldUpdateOperationsInput | string
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
     moneda?: NullableStringFieldUpdateOperationsInput | string | null
     contacto?: StringFieldUpdateOperationsInput | string
@@ -4469,7 +6645,7 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
     extra?: InputJsonValue | InputJsonValue | null
     comentarios?: ComentarioUncheckedUpdateManyWithoutAdisoNestedInput
     imagenes?: ImagenUncheckedUpdateManyWithoutAdisoNestedInput
@@ -4479,7 +6655,7 @@ export namespace Prisma {
     id?: string
     titulo: string
     descripcion: string
-    categoriaId: number
+    categoriaId: string
     precio?: number | null
     moneda?: string | null
     contacto: string
@@ -4488,14 +6664,13 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso
     expiracion?: Date | string | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
     extra?: InputJsonValue | null
   }
 
   export type AdisoUpdateManyMutationInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
-    categoriaId?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
     moneda?: NullableStringFieldUpdateOperationsInput | string | null
     contacto?: StringFieldUpdateOperationsInput | string
@@ -4504,14 +6679,13 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
     extra?: InputJsonValue | InputJsonValue | null
   }
 
   export type AdisoUncheckedUpdateManyInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
-    categoriaId?: IntFieldUpdateOperationsInput | number
+    categoriaId?: StringFieldUpdateOperationsInput | string
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
     moneda?: NullableStringFieldUpdateOperationsInput | string | null
     contacto?: StringFieldUpdateOperationsInput | string
@@ -4520,7 +6694,7 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
     extra?: InputJsonValue | InputJsonValue | null
   }
 
@@ -4566,7 +6740,7 @@ export namespace Prisma {
     contenido: string
     calificacion?: number | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
     adiso: AdisoCreateNestedOneWithoutComentariosInput
   }
 
@@ -4575,7 +6749,7 @@ export namespace Prisma {
     contenido: string
     calificacion?: number | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
     adisoId: string
   }
 
@@ -4583,7 +6757,7 @@ export namespace Prisma {
     contenido?: StringFieldUpdateOperationsInput | string
     calificacion?: NullableIntFieldUpdateOperationsInput | number | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
     adiso?: AdisoUpdateOneRequiredWithoutComentariosNestedInput
   }
 
@@ -4591,7 +6765,7 @@ export namespace Prisma {
     contenido?: StringFieldUpdateOperationsInput | string
     calificacion?: NullableIntFieldUpdateOperationsInput | number | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
     adisoId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4600,7 +6774,7 @@ export namespace Prisma {
     contenido: string
     calificacion?: number | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
     adisoId: string
   }
 
@@ -4608,15 +6782,85 @@ export namespace Prisma {
     contenido?: StringFieldUpdateOperationsInput | string
     calificacion?: NullableIntFieldUpdateOperationsInput | number | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ComentarioUncheckedUpdateManyInput = {
     contenido?: StringFieldUpdateOperationsInput | string
     calificacion?: NullableIntFieldUpdateOperationsInput | number | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
     adisoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UsuarioCreateInput = {
+    id?: string
+    nombre: string
+    ads?: AdisoCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioUncheckedCreateInput = {
+    id?: string
+    nombre: string
+    ads?: AdisoUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioUpdateInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    ads?: AdisoUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    ads?: AdisoUncheckedUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UsuarioCreateManyInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type UsuarioUpdateManyMutationInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UsuarioUncheckedUpdateManyInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoriaCreateInput = {
+    id?: string
+    nombre: string
+    ads?: AdisoCreateNestedManyWithoutCategoriaInput
+  }
+
+  export type CategoriaUncheckedCreateInput = {
+    id?: string
+    nombre: string
+    ads?: AdisoUncheckedCreateNestedManyWithoutCategoriaInput
+  }
+
+  export type CategoriaUpdateInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    ads?: AdisoUpdateManyWithoutCategoriaNestedInput
+  }
+
+  export type CategoriaUncheckedUpdateInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    ads?: AdisoUncheckedUpdateManyWithoutCategoriaNestedInput
+  }
+
+  export type CategoriaCreateManyInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type CategoriaUpdateManyMutationInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoriaUncheckedUpdateManyInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4632,17 +6876,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type FloatNullableFilter<$PrismaModel = never> = {
@@ -4727,6 +6960,16 @@ export namespace Prisma {
     none?: ImagenWhereInput
   }
 
+  export type UsuarioScalarRelationFilter = {
+    is?: UsuarioWhereInput
+    isNot?: UsuarioWhereInput
+  }
+
+  export type CategoriaScalarRelationFilter = {
+    is?: CategoriaWhereInput
+    isNot?: CategoriaWhereInput
+  }
+
   export type ComentarioOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -4753,11 +6996,9 @@ export namespace Prisma {
   }
 
   export type AdisoAvgOrderByAggregateInput = {
-    categoriaId?: SortOrder
     precio?: SortOrder
     latitud?: SortOrder
     longitud?: SortOrder
-    usuarioId?: SortOrder
   }
 
   export type AdisoMaxOrderByAggregateInput = {
@@ -4793,11 +7034,9 @@ export namespace Prisma {
   }
 
   export type AdisoSumOrderByAggregateInput = {
-    categoriaId?: SortOrder
     precio?: SortOrder
     latitud?: SortOrder
     longitud?: SortOrder
-    usuarioId?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -4816,22 +7055,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4970,7 +7193,6 @@ export namespace Prisma {
 
   export type ComentarioAvgOrderByAggregateInput = {
     calificacion?: SortOrder
-    usuarioId?: SortOrder
   }
 
   export type ComentarioMaxOrderByAggregateInput = {
@@ -4993,7 +7215,6 @@ export namespace Prisma {
 
   export type ComentarioSumOrderByAggregateInput = {
     calificacion?: SortOrder
-    usuarioId?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5013,6 +7234,46 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type AdisoListRelationFilter = {
+    every?: AdisoWhereInput
+    some?: AdisoWhereInput
+    none?: AdisoWhereInput
+  }
+
+  export type AdisoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UsuarioCountOrderByAggregateInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+  }
+
+  export type UsuarioMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+  }
+
+  export type UsuarioMinOrderByAggregateInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+  }
+
+  export type CategoriaCountOrderByAggregateInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+  }
+
+  export type CategoriaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+  }
+
+  export type CategoriaMinOrderByAggregateInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+  }
+
   export type ComentarioCreateNestedManyWithoutAdisoInput = {
     create?: XOR<ComentarioCreateWithoutAdisoInput, ComentarioUncheckedCreateWithoutAdisoInput> | ComentarioCreateWithoutAdisoInput[] | ComentarioUncheckedCreateWithoutAdisoInput[]
     connectOrCreate?: ComentarioCreateOrConnectWithoutAdisoInput | ComentarioCreateOrConnectWithoutAdisoInput[]
@@ -5025,6 +7286,18 @@ export namespace Prisma {
     connectOrCreate?: ImagenCreateOrConnectWithoutAdisoInput | ImagenCreateOrConnectWithoutAdisoInput[]
     createMany?: ImagenCreateManyAdisoInputEnvelope
     connect?: ImagenWhereUniqueInput | ImagenWhereUniqueInput[]
+  }
+
+  export type UsuarioCreateNestedOneWithoutAdsInput = {
+    create?: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAdsInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
+  export type CategoriaCreateNestedOneWithoutAdsInput = {
+    create?: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: CategoriaCreateOrConnectWithoutAdsInput
+    connect?: CategoriaWhereUniqueInput
   }
 
   export type ComentarioUncheckedCreateNestedManyWithoutAdisoInput = {
@@ -5043,14 +7316,6 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type NullableFloatFieldUpdateOperationsInput = {
@@ -5106,6 +7371,22 @@ export namespace Prisma {
     update?: ImagenUpdateWithWhereUniqueWithoutAdisoInput | ImagenUpdateWithWhereUniqueWithoutAdisoInput[]
     updateMany?: ImagenUpdateManyWithWhereWithoutAdisoInput | ImagenUpdateManyWithWhereWithoutAdisoInput[]
     deleteMany?: ImagenScalarWhereInput | ImagenScalarWhereInput[]
+  }
+
+  export type UsuarioUpdateOneRequiredWithoutAdsNestedInput = {
+    create?: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAdsInput
+    upsert?: UsuarioUpsertWithoutAdsInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutAdsInput, UsuarioUpdateWithoutAdsInput>, UsuarioUncheckedUpdateWithoutAdsInput>
+  }
+
+  export type CategoriaUpdateOneRequiredWithoutAdsNestedInput = {
+    create?: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: CategoriaCreateOrConnectWithoutAdsInput
+    upsert?: CategoriaUpsertWithoutAdsInput
+    connect?: CategoriaWhereUniqueInput
+    update?: XOR<XOR<CategoriaUpdateToOneWithWhereWithoutAdsInput, CategoriaUpdateWithoutAdsInput>, CategoriaUncheckedUpdateWithoutAdsInput>
   }
 
   export type ComentarioUncheckedUpdateManyWithoutAdisoNestedInput = {
@@ -5173,6 +7454,90 @@ export namespace Prisma {
     update?: XOR<XOR<AdisoUpdateToOneWithWhereWithoutComentariosInput, AdisoUpdateWithoutComentariosInput>, AdisoUncheckedUpdateWithoutComentariosInput>
   }
 
+  export type AdisoCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<AdisoCreateWithoutUsuarioInput, AdisoUncheckedCreateWithoutUsuarioInput> | AdisoCreateWithoutUsuarioInput[] | AdisoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AdisoCreateOrConnectWithoutUsuarioInput | AdisoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: AdisoCreateManyUsuarioInputEnvelope
+    connect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+  }
+
+  export type AdisoUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<AdisoCreateWithoutUsuarioInput, AdisoUncheckedCreateWithoutUsuarioInput> | AdisoCreateWithoutUsuarioInput[] | AdisoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AdisoCreateOrConnectWithoutUsuarioInput | AdisoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: AdisoCreateManyUsuarioInputEnvelope
+    connect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+  }
+
+  export type AdisoUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<AdisoCreateWithoutUsuarioInput, AdisoUncheckedCreateWithoutUsuarioInput> | AdisoCreateWithoutUsuarioInput[] | AdisoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AdisoCreateOrConnectWithoutUsuarioInput | AdisoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: AdisoUpsertWithWhereUniqueWithoutUsuarioInput | AdisoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: AdisoCreateManyUsuarioInputEnvelope
+    set?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    disconnect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    delete?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    connect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    update?: AdisoUpdateWithWhereUniqueWithoutUsuarioInput | AdisoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: AdisoUpdateManyWithWhereWithoutUsuarioInput | AdisoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: AdisoScalarWhereInput | AdisoScalarWhereInput[]
+  }
+
+  export type AdisoUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<AdisoCreateWithoutUsuarioInput, AdisoUncheckedCreateWithoutUsuarioInput> | AdisoCreateWithoutUsuarioInput[] | AdisoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AdisoCreateOrConnectWithoutUsuarioInput | AdisoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: AdisoUpsertWithWhereUniqueWithoutUsuarioInput | AdisoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: AdisoCreateManyUsuarioInputEnvelope
+    set?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    disconnect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    delete?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    connect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    update?: AdisoUpdateWithWhereUniqueWithoutUsuarioInput | AdisoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: AdisoUpdateManyWithWhereWithoutUsuarioInput | AdisoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: AdisoScalarWhereInput | AdisoScalarWhereInput[]
+  }
+
+  export type AdisoCreateNestedManyWithoutCategoriaInput = {
+    create?: XOR<AdisoCreateWithoutCategoriaInput, AdisoUncheckedCreateWithoutCategoriaInput> | AdisoCreateWithoutCategoriaInput[] | AdisoUncheckedCreateWithoutCategoriaInput[]
+    connectOrCreate?: AdisoCreateOrConnectWithoutCategoriaInput | AdisoCreateOrConnectWithoutCategoriaInput[]
+    createMany?: AdisoCreateManyCategoriaInputEnvelope
+    connect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+  }
+
+  export type AdisoUncheckedCreateNestedManyWithoutCategoriaInput = {
+    create?: XOR<AdisoCreateWithoutCategoriaInput, AdisoUncheckedCreateWithoutCategoriaInput> | AdisoCreateWithoutCategoriaInput[] | AdisoUncheckedCreateWithoutCategoriaInput[]
+    connectOrCreate?: AdisoCreateOrConnectWithoutCategoriaInput | AdisoCreateOrConnectWithoutCategoriaInput[]
+    createMany?: AdisoCreateManyCategoriaInputEnvelope
+    connect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+  }
+
+  export type AdisoUpdateManyWithoutCategoriaNestedInput = {
+    create?: XOR<AdisoCreateWithoutCategoriaInput, AdisoUncheckedCreateWithoutCategoriaInput> | AdisoCreateWithoutCategoriaInput[] | AdisoUncheckedCreateWithoutCategoriaInput[]
+    connectOrCreate?: AdisoCreateOrConnectWithoutCategoriaInput | AdisoCreateOrConnectWithoutCategoriaInput[]
+    upsert?: AdisoUpsertWithWhereUniqueWithoutCategoriaInput | AdisoUpsertWithWhereUniqueWithoutCategoriaInput[]
+    createMany?: AdisoCreateManyCategoriaInputEnvelope
+    set?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    disconnect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    delete?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    connect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    update?: AdisoUpdateWithWhereUniqueWithoutCategoriaInput | AdisoUpdateWithWhereUniqueWithoutCategoriaInput[]
+    updateMany?: AdisoUpdateManyWithWhereWithoutCategoriaInput | AdisoUpdateManyWithWhereWithoutCategoriaInput[]
+    deleteMany?: AdisoScalarWhereInput | AdisoScalarWhereInput[]
+  }
+
+  export type AdisoUncheckedUpdateManyWithoutCategoriaNestedInput = {
+    create?: XOR<AdisoCreateWithoutCategoriaInput, AdisoUncheckedCreateWithoutCategoriaInput> | AdisoCreateWithoutCategoriaInput[] | AdisoUncheckedCreateWithoutCategoriaInput[]
+    connectOrCreate?: AdisoCreateOrConnectWithoutCategoriaInput | AdisoCreateOrConnectWithoutCategoriaInput[]
+    upsert?: AdisoUpsertWithWhereUniqueWithoutCategoriaInput | AdisoUpsertWithWhereUniqueWithoutCategoriaInput[]
+    createMany?: AdisoCreateManyCategoriaInputEnvelope
+    set?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    disconnect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    delete?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    connect?: AdisoWhereUniqueInput | AdisoWhereUniqueInput[]
+    update?: AdisoUpdateWithWhereUniqueWithoutCategoriaInput | AdisoUpdateWithWhereUniqueWithoutCategoriaInput[]
+    updateMany?: AdisoUpdateManyWithWhereWithoutCategoriaInput | AdisoUpdateManyWithWhereWithoutCategoriaInput[]
+    deleteMany?: AdisoScalarWhereInput | AdisoScalarWhereInput[]
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -5185,17 +7550,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -5272,7 +7626,7 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+  export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5280,23 +7634,7 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5419,7 +7757,7 @@ export namespace Prisma {
     contenido: string
     calificacion?: number | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
   }
 
   export type ComentarioUncheckedCreateWithoutAdisoInput = {
@@ -5427,7 +7765,7 @@ export namespace Prisma {
     contenido: string
     calificacion?: number | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
   }
 
   export type ComentarioCreateOrConnectWithoutAdisoInput = {
@@ -5458,6 +7796,36 @@ export namespace Prisma {
     data: ImagenCreateManyAdisoInput | ImagenCreateManyAdisoInput[]
   }
 
+  export type UsuarioCreateWithoutAdsInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type UsuarioUncheckedCreateWithoutAdsInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type UsuarioCreateOrConnectWithoutAdsInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
+  }
+
+  export type CategoriaCreateWithoutAdsInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type CategoriaUncheckedCreateWithoutAdsInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type CategoriaCreateOrConnectWithoutAdsInput = {
+    where: CategoriaWhereUniqueInput
+    create: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
+  }
+
   export type ComentarioUpsertWithWhereUniqueWithoutAdisoInput = {
     where: ComentarioWhereUniqueInput
     update: XOR<ComentarioUpdateWithoutAdisoInput, ComentarioUncheckedUpdateWithoutAdisoInput>
@@ -5482,7 +7850,7 @@ export namespace Prisma {
     contenido?: StringFilter<"Comentario"> | string
     calificacion?: IntNullableFilter<"Comentario"> | number | null
     creadoEn?: DateTimeFilter<"Comentario"> | Date | string
-    usuarioId?: IntFilter<"Comentario"> | number
+    usuarioId?: StringFilter<"Comentario"> | string
     adisoId?: StringFilter<"Comentario"> | string
   }
 
@@ -5511,11 +7879,48 @@ export namespace Prisma {
     adisoId?: StringFilter<"Imagen"> | string
   }
 
+  export type UsuarioUpsertWithoutAdsInput = {
+    update: XOR<UsuarioUpdateWithoutAdsInput, UsuarioUncheckedUpdateWithoutAdsInput>
+    create: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
+    where?: UsuarioWhereInput
+  }
+
+  export type UsuarioUpdateToOneWithWhereWithoutAdsInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutAdsInput, UsuarioUncheckedUpdateWithoutAdsInput>
+  }
+
+  export type UsuarioUpdateWithoutAdsInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UsuarioUncheckedUpdateWithoutAdsInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoriaUpsertWithoutAdsInput = {
+    update: XOR<CategoriaUpdateWithoutAdsInput, CategoriaUncheckedUpdateWithoutAdsInput>
+    create: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
+    where?: CategoriaWhereInput
+  }
+
+  export type CategoriaUpdateToOneWithWhereWithoutAdsInput = {
+    where?: CategoriaWhereInput
+    data: XOR<CategoriaUpdateWithoutAdsInput, CategoriaUncheckedUpdateWithoutAdsInput>
+  }
+
+  export type CategoriaUpdateWithoutAdsInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoriaUncheckedUpdateWithoutAdsInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+  }
+
   export type AdisoCreateWithoutImagenesInput = {
     id?: string
     titulo: string
     descripcion: string
-    categoriaId: number
     precio?: number | null
     moneda?: string | null
     contacto: string
@@ -5524,16 +7929,17 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso
     expiracion?: Date | string | null
     creadoEn?: Date | string
-    usuarioId: number
     extra?: InputJsonValue | null
     comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
+    usuario: UsuarioCreateNestedOneWithoutAdsInput
+    categoria: CategoriaCreateNestedOneWithoutAdsInput
   }
 
   export type AdisoUncheckedCreateWithoutImagenesInput = {
     id?: string
     titulo: string
     descripcion: string
-    categoriaId: number
+    categoriaId: string
     precio?: number | null
     moneda?: string | null
     contacto: string
@@ -5542,7 +7948,7 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso
     expiracion?: Date | string | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
     extra?: InputJsonValue | null
     comentarios?: ComentarioUncheckedCreateNestedManyWithoutAdisoInput
   }
@@ -5566,7 +7972,6 @@ export namespace Prisma {
   export type AdisoUpdateWithoutImagenesInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
-    categoriaId?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
     moneda?: NullableStringFieldUpdateOperationsInput | string | null
     contacto?: StringFieldUpdateOperationsInput | string
@@ -5575,15 +7980,16 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
     extra?: InputJsonValue | InputJsonValue | null
     comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutAdsNestedInput
+    categoria?: CategoriaUpdateOneRequiredWithoutAdsNestedInput
   }
 
   export type AdisoUncheckedUpdateWithoutImagenesInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
-    categoriaId?: IntFieldUpdateOperationsInput | number
+    categoriaId?: StringFieldUpdateOperationsInput | string
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
     moneda?: NullableStringFieldUpdateOperationsInput | string | null
     contacto?: StringFieldUpdateOperationsInput | string
@@ -5592,7 +7998,7 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
     extra?: InputJsonValue | InputJsonValue | null
     comentarios?: ComentarioUncheckedUpdateManyWithoutAdisoNestedInput
   }
@@ -5601,7 +8007,6 @@ export namespace Prisma {
     id?: string
     titulo: string
     descripcion: string
-    categoriaId: number
     precio?: number | null
     moneda?: string | null
     contacto: string
@@ -5610,16 +8015,17 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso
     expiracion?: Date | string | null
     creadoEn?: Date | string
-    usuarioId: number
     extra?: InputJsonValue | null
     imagenes?: ImagenCreateNestedManyWithoutAdisoInput
+    usuario: UsuarioCreateNestedOneWithoutAdsInput
+    categoria: CategoriaCreateNestedOneWithoutAdsInput
   }
 
   export type AdisoUncheckedCreateWithoutComentariosInput = {
     id?: string
     titulo: string
     descripcion: string
-    categoriaId: number
+    categoriaId: string
     precio?: number | null
     moneda?: string | null
     contacto: string
@@ -5628,7 +8034,7 @@ export namespace Prisma {
     estado: $Enums.EstadoAdiso
     expiracion?: Date | string | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
     extra?: InputJsonValue | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutAdisoInput
   }
@@ -5652,7 +8058,6 @@ export namespace Prisma {
   export type AdisoUpdateWithoutComentariosInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
-    categoriaId?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
     moneda?: NullableStringFieldUpdateOperationsInput | string | null
     contacto?: StringFieldUpdateOperationsInput | string
@@ -5661,15 +8066,16 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
     extra?: InputJsonValue | InputJsonValue | null
     imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutAdsNestedInput
+    categoria?: CategoriaUpdateOneRequiredWithoutAdsNestedInput
   }
 
   export type AdisoUncheckedUpdateWithoutComentariosInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
-    categoriaId?: IntFieldUpdateOperationsInput | number
+    categoriaId?: StringFieldUpdateOperationsInput | string
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
     moneda?: NullableStringFieldUpdateOperationsInput | string | null
     contacto?: StringFieldUpdateOperationsInput | string
@@ -5678,9 +8084,151 @@ export namespace Prisma {
     estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
     extra?: InputJsonValue | InputJsonValue | null
     imagenes?: ImagenUncheckedUpdateManyWithoutAdisoNestedInput
+  }
+
+  export type AdisoCreateWithoutUsuarioInput = {
+    id?: string
+    titulo: string
+    descripcion: string
+    precio?: number | null
+    moneda?: string | null
+    contacto: string
+    latitud?: number | null
+    longitud?: number | null
+    estado: $Enums.EstadoAdiso
+    expiracion?: Date | string | null
+    creadoEn?: Date | string
+    extra?: InputJsonValue | null
+    comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
+    imagenes?: ImagenCreateNestedManyWithoutAdisoInput
+    categoria: CategoriaCreateNestedOneWithoutAdsInput
+  }
+
+  export type AdisoUncheckedCreateWithoutUsuarioInput = {
+    id?: string
+    titulo: string
+    descripcion: string
+    categoriaId: string
+    precio?: number | null
+    moneda?: string | null
+    contacto: string
+    latitud?: number | null
+    longitud?: number | null
+    estado: $Enums.EstadoAdiso
+    expiracion?: Date | string | null
+    creadoEn?: Date | string
+    extra?: InputJsonValue | null
+    comentarios?: ComentarioUncheckedCreateNestedManyWithoutAdisoInput
+    imagenes?: ImagenUncheckedCreateNestedManyWithoutAdisoInput
+  }
+
+  export type AdisoCreateOrConnectWithoutUsuarioInput = {
+    where: AdisoWhereUniqueInput
+    create: XOR<AdisoCreateWithoutUsuarioInput, AdisoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type AdisoCreateManyUsuarioInputEnvelope = {
+    data: AdisoCreateManyUsuarioInput | AdisoCreateManyUsuarioInput[]
+  }
+
+  export type AdisoUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: AdisoWhereUniqueInput
+    update: XOR<AdisoUpdateWithoutUsuarioInput, AdisoUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<AdisoCreateWithoutUsuarioInput, AdisoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type AdisoUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: AdisoWhereUniqueInput
+    data: XOR<AdisoUpdateWithoutUsuarioInput, AdisoUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type AdisoUpdateManyWithWhereWithoutUsuarioInput = {
+    where: AdisoScalarWhereInput
+    data: XOR<AdisoUpdateManyMutationInput, AdisoUncheckedUpdateManyWithoutUsuarioInput>
+  }
+
+  export type AdisoScalarWhereInput = {
+    AND?: AdisoScalarWhereInput | AdisoScalarWhereInput[]
+    OR?: AdisoScalarWhereInput[]
+    NOT?: AdisoScalarWhereInput | AdisoScalarWhereInput[]
+    id?: StringFilter<"Adiso"> | string
+    titulo?: StringFilter<"Adiso"> | string
+    descripcion?: StringFilter<"Adiso"> | string
+    categoriaId?: StringFilter<"Adiso"> | string
+    precio?: FloatNullableFilter<"Adiso"> | number | null
+    moneda?: StringNullableFilter<"Adiso"> | string | null
+    contacto?: StringFilter<"Adiso"> | string
+    latitud?: FloatNullableFilter<"Adiso"> | number | null
+    longitud?: FloatNullableFilter<"Adiso"> | number | null
+    estado?: EnumEstadoAdisoFilter<"Adiso"> | $Enums.EstadoAdiso
+    expiracion?: DateTimeNullableFilter<"Adiso"> | Date | string | null
+    creadoEn?: DateTimeFilter<"Adiso"> | Date | string
+    usuarioId?: StringFilter<"Adiso"> | string
+    extra?: JsonNullableFilter<"Adiso">
+  }
+
+  export type AdisoCreateWithoutCategoriaInput = {
+    id?: string
+    titulo: string
+    descripcion: string
+    precio?: number | null
+    moneda?: string | null
+    contacto: string
+    latitud?: number | null
+    longitud?: number | null
+    estado: $Enums.EstadoAdiso
+    expiracion?: Date | string | null
+    creadoEn?: Date | string
+    extra?: InputJsonValue | null
+    comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
+    imagenes?: ImagenCreateNestedManyWithoutAdisoInput
+    usuario: UsuarioCreateNestedOneWithoutAdsInput
+  }
+
+  export type AdisoUncheckedCreateWithoutCategoriaInput = {
+    id?: string
+    titulo: string
+    descripcion: string
+    precio?: number | null
+    moneda?: string | null
+    contacto: string
+    latitud?: number | null
+    longitud?: number | null
+    estado: $Enums.EstadoAdiso
+    expiracion?: Date | string | null
+    creadoEn?: Date | string
+    usuarioId: string
+    extra?: InputJsonValue | null
+    comentarios?: ComentarioUncheckedCreateNestedManyWithoutAdisoInput
+    imagenes?: ImagenUncheckedCreateNestedManyWithoutAdisoInput
+  }
+
+  export type AdisoCreateOrConnectWithoutCategoriaInput = {
+    where: AdisoWhereUniqueInput
+    create: XOR<AdisoCreateWithoutCategoriaInput, AdisoUncheckedCreateWithoutCategoriaInput>
+  }
+
+  export type AdisoCreateManyCategoriaInputEnvelope = {
+    data: AdisoCreateManyCategoriaInput | AdisoCreateManyCategoriaInput[]
+  }
+
+  export type AdisoUpsertWithWhereUniqueWithoutCategoriaInput = {
+    where: AdisoWhereUniqueInput
+    update: XOR<AdisoUpdateWithoutCategoriaInput, AdisoUncheckedUpdateWithoutCategoriaInput>
+    create: XOR<AdisoCreateWithoutCategoriaInput, AdisoUncheckedCreateWithoutCategoriaInput>
+  }
+
+  export type AdisoUpdateWithWhereUniqueWithoutCategoriaInput = {
+    where: AdisoWhereUniqueInput
+    data: XOR<AdisoUpdateWithoutCategoriaInput, AdisoUncheckedUpdateWithoutCategoriaInput>
+  }
+
+  export type AdisoUpdateManyWithWhereWithoutCategoriaInput = {
+    where: AdisoScalarWhereInput
+    data: XOR<AdisoUpdateManyMutationInput, AdisoUncheckedUpdateManyWithoutCategoriaInput>
   }
 
   export type ComentarioCreateManyAdisoInput = {
@@ -5688,7 +8236,7 @@ export namespace Prisma {
     contenido: string
     calificacion?: number | null
     creadoEn?: Date | string
-    usuarioId: number
+    usuarioId: string
   }
 
   export type ImagenCreateManyAdisoInput = {
@@ -5700,21 +8248,21 @@ export namespace Prisma {
     contenido?: StringFieldUpdateOperationsInput | string
     calificacion?: NullableIntFieldUpdateOperationsInput | number | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ComentarioUncheckedUpdateWithoutAdisoInput = {
     contenido?: StringFieldUpdateOperationsInput | string
     calificacion?: NullableIntFieldUpdateOperationsInput | number | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ComentarioUncheckedUpdateManyWithoutAdisoInput = {
     contenido?: StringFieldUpdateOperationsInput | string
     calificacion?: NullableIntFieldUpdateOperationsInput | number | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuarioId?: IntFieldUpdateOperationsInput | number
+    usuarioId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ImagenUpdateWithoutAdisoInput = {
@@ -5727,6 +8275,136 @@ export namespace Prisma {
 
   export type ImagenUncheckedUpdateManyWithoutAdisoInput = {
     url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdisoCreateManyUsuarioInput = {
+    id?: string
+    titulo: string
+    descripcion: string
+    categoriaId: string
+    precio?: number | null
+    moneda?: string | null
+    contacto: string
+    latitud?: number | null
+    longitud?: number | null
+    estado: $Enums.EstadoAdiso
+    expiracion?: Date | string | null
+    creadoEn?: Date | string
+    extra?: InputJsonValue | null
+  }
+
+  export type AdisoUpdateWithoutUsuarioInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    moneda?: NullableStringFieldUpdateOperationsInput | string | null
+    contacto?: StringFieldUpdateOperationsInput | string
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
+    expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    extra?: InputJsonValue | InputJsonValue | null
+    comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
+    imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
+    categoria?: CategoriaUpdateOneRequiredWithoutAdsNestedInput
+  }
+
+  export type AdisoUncheckedUpdateWithoutUsuarioInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    categoriaId?: StringFieldUpdateOperationsInput | string
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    moneda?: NullableStringFieldUpdateOperationsInput | string | null
+    contacto?: StringFieldUpdateOperationsInput | string
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
+    expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    extra?: InputJsonValue | InputJsonValue | null
+    comentarios?: ComentarioUncheckedUpdateManyWithoutAdisoNestedInput
+    imagenes?: ImagenUncheckedUpdateManyWithoutAdisoNestedInput
+  }
+
+  export type AdisoUncheckedUpdateManyWithoutUsuarioInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    categoriaId?: StringFieldUpdateOperationsInput | string
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    moneda?: NullableStringFieldUpdateOperationsInput | string | null
+    contacto?: StringFieldUpdateOperationsInput | string
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
+    expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    extra?: InputJsonValue | InputJsonValue | null
+  }
+
+  export type AdisoCreateManyCategoriaInput = {
+    id?: string
+    titulo: string
+    descripcion: string
+    precio?: number | null
+    moneda?: string | null
+    contacto: string
+    latitud?: number | null
+    longitud?: number | null
+    estado: $Enums.EstadoAdiso
+    expiracion?: Date | string | null
+    creadoEn?: Date | string
+    usuarioId: string
+    extra?: InputJsonValue | null
+  }
+
+  export type AdisoUpdateWithoutCategoriaInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    moneda?: NullableStringFieldUpdateOperationsInput | string | null
+    contacto?: StringFieldUpdateOperationsInput | string
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
+    expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    extra?: InputJsonValue | InputJsonValue | null
+    comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
+    imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutAdsNestedInput
+  }
+
+  export type AdisoUncheckedUpdateWithoutCategoriaInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    moneda?: NullableStringFieldUpdateOperationsInput | string | null
+    contacto?: StringFieldUpdateOperationsInput | string
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
+    expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuarioId?: StringFieldUpdateOperationsInput | string
+    extra?: InputJsonValue | InputJsonValue | null
+    comentarios?: ComentarioUncheckedUpdateManyWithoutAdisoNestedInput
+    imagenes?: ImagenUncheckedUpdateManyWithoutAdisoNestedInput
+  }
+
+  export type AdisoUncheckedUpdateManyWithoutCategoriaInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    moneda?: NullableStringFieldUpdateOperationsInput | string | null
+    contacto?: StringFieldUpdateOperationsInput | string
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    estado?: EnumEstadoAdisoFieldUpdateOperationsInput | $Enums.EstadoAdiso
+    expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuarioId?: StringFieldUpdateOperationsInput | string
+    extra?: InputJsonValue | InputJsonValue | null
   }
 
 
