@@ -1,5 +1,6 @@
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { PrismaClient as MongoPrismaClient } from '../../prisma/generated/mongo';
+import * as path from 'path';
 
 @Injectable()
 export class PrismaMongoService
@@ -9,11 +10,15 @@ export class PrismaMongoService
   constructor() {
     super({
       datasources: {
-        mongodb: { // Asegurado que el datasource es 'mongodb'
+        mongodb: {
           url: process.env.MONGODB_URL,
         },
       },
     });
+
+    // Asegurar la correcta ubicación del cliente generado
+    const prismaPath = path.resolve(__dirname, '../../prisma/generated/mongo');
+    // Puedes implementar lógica adicional si es necesario
   }
 
   async onModuleInit() {

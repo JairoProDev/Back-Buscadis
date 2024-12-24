@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated/mongo"
+  output   = "../prisma/generated/mongo" // Correctamente asignado con el signo igual
 }
 
 datasource mongodb {
@@ -22,12 +22,12 @@ model Adiso {
   expiracion  DateTime?
   creadoEn    DateTime        @default(now())
   usuarioId   String
-  comentarios Comentario[]
-  imagenes    Imagen[]
-  extra       Json?
 
   usuario     Usuario         @relation(fields: [usuarioId], references: [id])
   categoria   Categoria       @relation(fields: [categoriaId], references: [id])
+  comentarios Comentario[]
+  imagenes    Imagen[]
+  extra       Json?
 }
 
 model Imagen {
