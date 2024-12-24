@@ -1,6 +1,6 @@
+// src/prisma/prisma.mongo.service.ts
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
-import { PrismaClient as MongoPrismaClient } from '../../prisma/generated/mongo';
-import * as path from 'path';
+import { PrismaClient as MongoPrismaClient } from './generated/mongo'; // Ruta correcta
 
 @Injectable()
 export class PrismaMongoService
@@ -15,10 +15,6 @@ export class PrismaMongoService
         },
       },
     });
-
-    // Asegurar la correcta ubicación del cliente generado
-    const prismaPath = path.resolve(__dirname, '../../prisma/generated/mongo');
-    // Puedes implementar lógica adicional si es necesario
   }
 
   async onModuleInit() {

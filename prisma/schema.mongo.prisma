@@ -1,6 +1,8 @@
+// filepath: prisma/schema.mongo.prisma
+
 generator client {
   provider = "prisma-client-js"
-  output   = "../prisma/generated/mongo" // Correctamente asignado con el signo igual
+  output   = "../src/prisma/generated/mongo" // Asegurado con el signo igual
 }
 
 datasource mongodb {
