@@ -1,4 +1,3 @@
-// tsconfig.json
 {
   "compilerOptions": {
     "module": "commonjs",
@@ -14,7 +13,7 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strict": true, // Habilita todas las comprobaciones estrictas
+    "strict": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "strictBindCallApply": true,
