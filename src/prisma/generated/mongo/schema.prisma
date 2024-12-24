@@ -1,6 +1,8 @@
+// filepath: prisma/schema.mongo.prisma
+
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/prisma/generated/mongo" // Actualizado para generar dentro de src
+  output   = "../src/prisma/generated/mongo" // Asegurado con el signo igual
 }
 
 datasource mongodb {
@@ -9,7 +11,7 @@ datasource mongodb {
 }
 
 model Adiso {
-  id          String       @id @default(auto()) @map("_id") @mongodb.ObjectId
+  id          String      @id @default(auto()) @map("_id") @mongodb.ObjectId
   titulo      String
   descripcion String
   categoriaId String
@@ -20,14 +22,14 @@ model Adiso {
   longitud    Float?
   estado      EstadoAdiso
   expiracion  DateTime?
-  creadoEn    DateTime     @default(now())
+  creadoEn    DateTime    @default(now())
   usuarioId   String
+
+  usuario     Usuario      @relation(fields: [usuarioId], references: [id])
+  categoria   Categoria    @relation(fields: [categoriaId], references: [id])
   comentarios Comentario[]
   imagenes    Imagen[]
   extra       Json?
-
-  usuario   Usuario   @relation(fields: [usuarioId], references: [id])
-  categoria Categoria @relation(fields: [categoriaId], references: [id])
 }
 
 model Imagen {

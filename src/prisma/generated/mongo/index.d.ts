@@ -1554,10 +1554,10 @@ export namespace Prisma {
     creadoEn?: boolean
     usuarioId?: boolean
     extra?: boolean
-    comentarios?: boolean | Adiso$comentariosArgs<ExtArgs>
-    imagenes?: boolean | Adiso$imagenesArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     categoria?: boolean | CategoriaDefaultArgs<ExtArgs>
+    comentarios?: boolean | Adiso$comentariosArgs<ExtArgs>
+    imagenes?: boolean | Adiso$imagenesArgs<ExtArgs>
     _count?: boolean | AdisoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adiso"]>
 
@@ -1580,20 +1580,20 @@ export namespace Prisma {
   }
 
   export type AdisoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    comentarios?: boolean | Adiso$comentariosArgs<ExtArgs>
-    imagenes?: boolean | Adiso$imagenesArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     categoria?: boolean | CategoriaDefaultArgs<ExtArgs>
+    comentarios?: boolean | Adiso$comentariosArgs<ExtArgs>
+    imagenes?: boolean | Adiso$imagenesArgs<ExtArgs>
     _count?: boolean | AdisoCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $AdisoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Adiso"
     objects: {
-      comentarios: Prisma.$ComentarioPayload<ExtArgs>[]
-      imagenes: Prisma.$ImagenPayload<ExtArgs>[]
       usuario: Prisma.$UsuarioPayload<ExtArgs>
       categoria: Prisma.$CategoriaPayload<ExtArgs>
+      comentarios: Prisma.$ComentarioPayload<ExtArgs>[]
+      imagenes: Prisma.$ImagenPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1973,10 +1973,10 @@ export namespace Prisma {
    */
   export interface Prisma__AdisoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    comentarios<T extends Adiso$comentariosArgs<ExtArgs> = {}>(args?: Subset<T, Adiso$comentariosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findMany"> | Null>
-    imagenes<T extends Adiso$imagenesArgs<ExtArgs> = {}>(args?: Subset<T, Adiso$imagenesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagenPayload<ExtArgs>, T, "findMany"> | Null>
     usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     categoria<T extends CategoriaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoriaDefaultArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    comentarios<T extends Adiso$comentariosArgs<ExtArgs> = {}>(args?: Subset<T, Adiso$comentariosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findMany"> | Null>
+    imagenes<T extends Adiso$imagenesArgs<ExtArgs> = {}>(args?: Subset<T, Adiso$imagenesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagenPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6297,10 +6297,10 @@ export namespace Prisma {
     creadoEn?: DateTimeFilter<"Adiso"> | Date | string
     usuarioId?: StringFilter<"Adiso"> | string
     extra?: JsonNullableFilter<"Adiso">
-    comentarios?: ComentarioListRelationFilter
-    imagenes?: ImagenListRelationFilter
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     categoria?: XOR<CategoriaScalarRelationFilter, CategoriaWhereInput>
+    comentarios?: ComentarioListRelationFilter
+    imagenes?: ImagenListRelationFilter
   }
 
   export type AdisoOrderByWithRelationInput = {
@@ -6318,10 +6318,10 @@ export namespace Prisma {
     creadoEn?: SortOrder
     usuarioId?: SortOrder
     extra?: SortOrder
-    comentarios?: ComentarioOrderByRelationAggregateInput
-    imagenes?: ImagenOrderByRelationAggregateInput
     usuario?: UsuarioOrderByWithRelationInput
     categoria?: CategoriaOrderByWithRelationInput
+    comentarios?: ComentarioOrderByRelationAggregateInput
+    imagenes?: ImagenOrderByRelationAggregateInput
   }
 
   export type AdisoWhereUniqueInput = Prisma.AtLeast<{
@@ -6342,10 +6342,10 @@ export namespace Prisma {
     creadoEn?: DateTimeFilter<"Adiso"> | Date | string
     usuarioId?: StringFilter<"Adiso"> | string
     extra?: JsonNullableFilter<"Adiso">
-    comentarios?: ComentarioListRelationFilter
-    imagenes?: ImagenListRelationFilter
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     categoria?: XOR<CategoriaScalarRelationFilter, CategoriaWhereInput>
+    comentarios?: ComentarioListRelationFilter
+    imagenes?: ImagenListRelationFilter
   }, "id">
 
   export type AdisoOrderByWithAggregationInput = {
@@ -6590,10 +6590,10 @@ export namespace Prisma {
     expiracion?: Date | string | null
     creadoEn?: Date | string
     extra?: InputJsonValue | null
-    comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
-    imagenes?: ImagenCreateNestedManyWithoutAdisoInput
     usuario: UsuarioCreateNestedOneWithoutAdsInput
     categoria: CategoriaCreateNestedOneWithoutAdsInput
+    comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
+    imagenes?: ImagenCreateNestedManyWithoutAdisoInput
   }
 
   export type AdisoUncheckedCreateInput = {
@@ -6627,10 +6627,10 @@ export namespace Prisma {
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
     extra?: InputJsonValue | InputJsonValue | null
-    comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
-    imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
     usuario?: UsuarioUpdateOneRequiredWithoutAdsNestedInput
     categoria?: CategoriaUpdateOneRequiredWithoutAdsNestedInput
+    comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
+    imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
   }
 
   export type AdisoUncheckedUpdateInput = {
@@ -6948,6 +6948,16 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type UsuarioScalarRelationFilter = {
+    is?: UsuarioWhereInput
+    isNot?: UsuarioWhereInput
+  }
+
+  export type CategoriaScalarRelationFilter = {
+    is?: CategoriaWhereInput
+    isNot?: CategoriaWhereInput
+  }
+
   export type ComentarioListRelationFilter = {
     every?: ComentarioWhereInput
     some?: ComentarioWhereInput
@@ -6958,16 +6968,6 @@ export namespace Prisma {
     every?: ImagenWhereInput
     some?: ImagenWhereInput
     none?: ImagenWhereInput
-  }
-
-  export type UsuarioScalarRelationFilter = {
-    is?: UsuarioWhereInput
-    isNot?: UsuarioWhereInput
-  }
-
-  export type CategoriaScalarRelationFilter = {
-    is?: CategoriaWhereInput
-    isNot?: CategoriaWhereInput
   }
 
   export type ComentarioOrderByRelationAggregateInput = {
@@ -7274,6 +7274,18 @@ export namespace Prisma {
     nombre?: SortOrder
   }
 
+  export type UsuarioCreateNestedOneWithoutAdsInput = {
+    create?: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAdsInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
+  export type CategoriaCreateNestedOneWithoutAdsInput = {
+    create?: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: CategoriaCreateOrConnectWithoutAdsInput
+    connect?: CategoriaWhereUniqueInput
+  }
+
   export type ComentarioCreateNestedManyWithoutAdisoInput = {
     create?: XOR<ComentarioCreateWithoutAdisoInput, ComentarioUncheckedCreateWithoutAdisoInput> | ComentarioCreateWithoutAdisoInput[] | ComentarioUncheckedCreateWithoutAdisoInput[]
     connectOrCreate?: ComentarioCreateOrConnectWithoutAdisoInput | ComentarioCreateOrConnectWithoutAdisoInput[]
@@ -7286,18 +7298,6 @@ export namespace Prisma {
     connectOrCreate?: ImagenCreateOrConnectWithoutAdisoInput | ImagenCreateOrConnectWithoutAdisoInput[]
     createMany?: ImagenCreateManyAdisoInputEnvelope
     connect?: ImagenWhereUniqueInput | ImagenWhereUniqueInput[]
-  }
-
-  export type UsuarioCreateNestedOneWithoutAdsInput = {
-    create?: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutAdsInput
-    connect?: UsuarioWhereUniqueInput
-  }
-
-  export type CategoriaCreateNestedOneWithoutAdsInput = {
-    create?: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
-    connectOrCreate?: CategoriaCreateOrConnectWithoutAdsInput
-    connect?: CategoriaWhereUniqueInput
   }
 
   export type ComentarioUncheckedCreateNestedManyWithoutAdisoInput = {
@@ -7345,6 +7345,22 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type UsuarioUpdateOneRequiredWithoutAdsNestedInput = {
+    create?: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAdsInput
+    upsert?: UsuarioUpsertWithoutAdsInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutAdsInput, UsuarioUpdateWithoutAdsInput>, UsuarioUncheckedUpdateWithoutAdsInput>
+  }
+
+  export type CategoriaUpdateOneRequiredWithoutAdsNestedInput = {
+    create?: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: CategoriaCreateOrConnectWithoutAdsInput
+    upsert?: CategoriaUpsertWithoutAdsInput
+    connect?: CategoriaWhereUniqueInput
+    update?: XOR<XOR<CategoriaUpdateToOneWithWhereWithoutAdsInput, CategoriaUpdateWithoutAdsInput>, CategoriaUncheckedUpdateWithoutAdsInput>
+  }
+
   export type ComentarioUpdateManyWithoutAdisoNestedInput = {
     create?: XOR<ComentarioCreateWithoutAdisoInput, ComentarioUncheckedCreateWithoutAdisoInput> | ComentarioCreateWithoutAdisoInput[] | ComentarioUncheckedCreateWithoutAdisoInput[]
     connectOrCreate?: ComentarioCreateOrConnectWithoutAdisoInput | ComentarioCreateOrConnectWithoutAdisoInput[]
@@ -7371,22 +7387,6 @@ export namespace Prisma {
     update?: ImagenUpdateWithWhereUniqueWithoutAdisoInput | ImagenUpdateWithWhereUniqueWithoutAdisoInput[]
     updateMany?: ImagenUpdateManyWithWhereWithoutAdisoInput | ImagenUpdateManyWithWhereWithoutAdisoInput[]
     deleteMany?: ImagenScalarWhereInput | ImagenScalarWhereInput[]
-  }
-
-  export type UsuarioUpdateOneRequiredWithoutAdsNestedInput = {
-    create?: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutAdsInput
-    upsert?: UsuarioUpsertWithoutAdsInput
-    connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutAdsInput, UsuarioUpdateWithoutAdsInput>, UsuarioUncheckedUpdateWithoutAdsInput>
-  }
-
-  export type CategoriaUpdateOneRequiredWithoutAdsNestedInput = {
-    create?: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
-    connectOrCreate?: CategoriaCreateOrConnectWithoutAdsInput
-    upsert?: CategoriaUpsertWithoutAdsInput
-    connect?: CategoriaWhereUniqueInput
-    update?: XOR<XOR<CategoriaUpdateToOneWithWhereWithoutAdsInput, CategoriaUpdateWithoutAdsInput>, CategoriaUncheckedUpdateWithoutAdsInput>
   }
 
   export type ComentarioUncheckedUpdateManyWithoutAdisoNestedInput = {
@@ -7752,6 +7752,36 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type UsuarioCreateWithoutAdsInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type UsuarioUncheckedCreateWithoutAdsInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type UsuarioCreateOrConnectWithoutAdsInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
+  }
+
+  export type CategoriaCreateWithoutAdsInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type CategoriaUncheckedCreateWithoutAdsInput = {
+    id?: string
+    nombre: string
+  }
+
+  export type CategoriaCreateOrConnectWithoutAdsInput = {
+    where: CategoriaWhereUniqueInput
+    create: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
+  }
+
   export type ComentarioCreateWithoutAdisoInput = {
     id?: string
     contenido: string
@@ -7796,34 +7826,42 @@ export namespace Prisma {
     data: ImagenCreateManyAdisoInput | ImagenCreateManyAdisoInput[]
   }
 
-  export type UsuarioCreateWithoutAdsInput = {
-    id?: string
-    nombre: string
-  }
-
-  export type UsuarioUncheckedCreateWithoutAdsInput = {
-    id?: string
-    nombre: string
-  }
-
-  export type UsuarioCreateOrConnectWithoutAdsInput = {
-    where: UsuarioWhereUniqueInput
+  export type UsuarioUpsertWithoutAdsInput = {
+    update: XOR<UsuarioUpdateWithoutAdsInput, UsuarioUncheckedUpdateWithoutAdsInput>
     create: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
+    where?: UsuarioWhereInput
   }
 
-  export type CategoriaCreateWithoutAdsInput = {
-    id?: string
-    nombre: string
+  export type UsuarioUpdateToOneWithWhereWithoutAdsInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutAdsInput, UsuarioUncheckedUpdateWithoutAdsInput>
   }
 
-  export type CategoriaUncheckedCreateWithoutAdsInput = {
-    id?: string
-    nombre: string
+  export type UsuarioUpdateWithoutAdsInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
   }
 
-  export type CategoriaCreateOrConnectWithoutAdsInput = {
-    where: CategoriaWhereUniqueInput
+  export type UsuarioUncheckedUpdateWithoutAdsInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoriaUpsertWithoutAdsInput = {
+    update: XOR<CategoriaUpdateWithoutAdsInput, CategoriaUncheckedUpdateWithoutAdsInput>
     create: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
+    where?: CategoriaWhereInput
+  }
+
+  export type CategoriaUpdateToOneWithWhereWithoutAdsInput = {
+    where?: CategoriaWhereInput
+    data: XOR<CategoriaUpdateWithoutAdsInput, CategoriaUncheckedUpdateWithoutAdsInput>
+  }
+
+  export type CategoriaUpdateWithoutAdsInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoriaUncheckedUpdateWithoutAdsInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
   }
 
   export type ComentarioUpsertWithWhereUniqueWithoutAdisoInput = {
@@ -7879,44 +7917,6 @@ export namespace Prisma {
     adisoId?: StringFilter<"Imagen"> | string
   }
 
-  export type UsuarioUpsertWithoutAdsInput = {
-    update: XOR<UsuarioUpdateWithoutAdsInput, UsuarioUncheckedUpdateWithoutAdsInput>
-    create: XOR<UsuarioCreateWithoutAdsInput, UsuarioUncheckedCreateWithoutAdsInput>
-    where?: UsuarioWhereInput
-  }
-
-  export type UsuarioUpdateToOneWithWhereWithoutAdsInput = {
-    where?: UsuarioWhereInput
-    data: XOR<UsuarioUpdateWithoutAdsInput, UsuarioUncheckedUpdateWithoutAdsInput>
-  }
-
-  export type UsuarioUpdateWithoutAdsInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UsuarioUncheckedUpdateWithoutAdsInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CategoriaUpsertWithoutAdsInput = {
-    update: XOR<CategoriaUpdateWithoutAdsInput, CategoriaUncheckedUpdateWithoutAdsInput>
-    create: XOR<CategoriaCreateWithoutAdsInput, CategoriaUncheckedCreateWithoutAdsInput>
-    where?: CategoriaWhereInput
-  }
-
-  export type CategoriaUpdateToOneWithWhereWithoutAdsInput = {
-    where?: CategoriaWhereInput
-    data: XOR<CategoriaUpdateWithoutAdsInput, CategoriaUncheckedUpdateWithoutAdsInput>
-  }
-
-  export type CategoriaUpdateWithoutAdsInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CategoriaUncheckedUpdateWithoutAdsInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-  }
-
   export type AdisoCreateWithoutImagenesInput = {
     id?: string
     titulo: string
@@ -7930,9 +7930,9 @@ export namespace Prisma {
     expiracion?: Date | string | null
     creadoEn?: Date | string
     extra?: InputJsonValue | null
-    comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
     usuario: UsuarioCreateNestedOneWithoutAdsInput
     categoria: CategoriaCreateNestedOneWithoutAdsInput
+    comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
   }
 
   export type AdisoUncheckedCreateWithoutImagenesInput = {
@@ -7981,9 +7981,9 @@ export namespace Prisma {
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
     extra?: InputJsonValue | InputJsonValue | null
-    comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
     usuario?: UsuarioUpdateOneRequiredWithoutAdsNestedInput
     categoria?: CategoriaUpdateOneRequiredWithoutAdsNestedInput
+    comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
   }
 
   export type AdisoUncheckedUpdateWithoutImagenesInput = {
@@ -8016,9 +8016,9 @@ export namespace Prisma {
     expiracion?: Date | string | null
     creadoEn?: Date | string
     extra?: InputJsonValue | null
-    imagenes?: ImagenCreateNestedManyWithoutAdisoInput
     usuario: UsuarioCreateNestedOneWithoutAdsInput
     categoria: CategoriaCreateNestedOneWithoutAdsInput
+    imagenes?: ImagenCreateNestedManyWithoutAdisoInput
   }
 
   export type AdisoUncheckedCreateWithoutComentariosInput = {
@@ -8067,9 +8067,9 @@ export namespace Prisma {
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
     extra?: InputJsonValue | InputJsonValue | null
-    imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
     usuario?: UsuarioUpdateOneRequiredWithoutAdsNestedInput
     categoria?: CategoriaUpdateOneRequiredWithoutAdsNestedInput
+    imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
   }
 
   export type AdisoUncheckedUpdateWithoutComentariosInput = {
@@ -8102,9 +8102,9 @@ export namespace Prisma {
     expiracion?: Date | string | null
     creadoEn?: Date | string
     extra?: InputJsonValue | null
+    categoria: CategoriaCreateNestedOneWithoutAdsInput
     comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
     imagenes?: ImagenCreateNestedManyWithoutAdisoInput
-    categoria: CategoriaCreateNestedOneWithoutAdsInput
   }
 
   export type AdisoUncheckedCreateWithoutUsuarioInput = {
@@ -8183,9 +8183,9 @@ export namespace Prisma {
     expiracion?: Date | string | null
     creadoEn?: Date | string
     extra?: InputJsonValue | null
+    usuario: UsuarioCreateNestedOneWithoutAdsInput
     comentarios?: ComentarioCreateNestedManyWithoutAdisoInput
     imagenes?: ImagenCreateNestedManyWithoutAdisoInput
-    usuario: UsuarioCreateNestedOneWithoutAdsInput
   }
 
   export type AdisoUncheckedCreateWithoutCategoriaInput = {
@@ -8305,9 +8305,9 @@ export namespace Prisma {
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
     extra?: InputJsonValue | InputJsonValue | null
+    categoria?: CategoriaUpdateOneRequiredWithoutAdsNestedInput
     comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
     imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
-    categoria?: CategoriaUpdateOneRequiredWithoutAdsNestedInput
   }
 
   export type AdisoUncheckedUpdateWithoutUsuarioInput = {
@@ -8370,9 +8370,9 @@ export namespace Prisma {
     expiracion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadoEn?: DateTimeFieldUpdateOperationsInput | Date | string
     extra?: InputJsonValue | InputJsonValue | null
+    usuario?: UsuarioUpdateOneRequiredWithoutAdsNestedInput
     comentarios?: ComentarioUpdateManyWithoutAdisoNestedInput
     imagenes?: ImagenUpdateManyWithoutAdisoNestedInput
-    usuario?: UsuarioUpdateOneRequiredWithoutAdsNestedInput
   }
 
   export type AdisoUncheckedUpdateWithoutCategoriaInput = {

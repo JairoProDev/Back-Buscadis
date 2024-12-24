@@ -1,8 +1,8 @@
-// filepath: prisma/schema.mongo.prisma
+// prisma/schema.mongo.prisma
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/prisma/generated/mongo" // Asegurado con el signo igual
+  output   = "../src/prisma/generated/mongo" // Ruta correcta
 }
 
 datasource mongodb {
@@ -21,7 +21,7 @@ model Adiso {
   latitud     Float?
   longitud    Float?
   estado      EstadoAdiso
-  expiracion  DateTime?
+  expiracion  DateTime?      // Completa el tipo de dato
   creadoEn    DateTime        @default(now())
   usuarioId   String
 
