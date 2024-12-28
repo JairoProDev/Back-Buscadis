@@ -1,3 +1,4 @@
+// src/users/users.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaPostgresService } from '../prisma/prisma.postgres.service';
 import { CreateUserDto } from './dto/create-user.dto';
