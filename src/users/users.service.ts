@@ -1,55 +1,60 @@
-// src/users/users.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaPostgresService } from '../prisma/prisma.postgres.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
+export interface User {
+  id: number;
+  nombre: string;
+  email: string;
+  password: string;
+  tipo: string;
+}
+
 @Injectable()
 export class UsersService {
-  constructor(private readonly prisma: PrismaPostgresService) {}
+  private users: User[] = [];
+  private idCounter = 1;
 
-  async create(createUserDto: CreateUserDto) {
-    return this.prisma.usuario.create({
-      data: createUserDto,
-    });
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const newUser: User = {
+      id: this.idCounter++,
+      ...createUserDto,
+      tipo: 'user',
+    };
+    this.users.push(newUser);
+    return newUser;
   }
 
-  async findById(id: number) {
-    const user = await this.prisma.usuario.findUnique({
-      where: { id },
-    });
+  async findById(id: number): Promise<User> {
+    const user = this.users.find(u => u.id === id);
     if (!user) {
       throw new NotFoundException(`User with ID ${id} not found`);
     }
     return user;
   }
 
-  async findAll() {
-    return this.prisma.usuario.findMany();
+  async findByEmail(email: string): Promise<User | undefined> {
+    return this.users.find(u => u.email === email);
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto) {
-    const user = await this.prisma.usuario.findUnique({
-      where: { id },
-    });
-    if (!user) {
-      throw new NotFoundException(`User with ID ${id} not found`);
-    }
-    return this.prisma.usuario.update({
-      where: { id },
-      data: updateUserDto,
-    });
+  async findAll(): Promise<User[]> {
+    return this.users;
   }
 
-  async delete(id: number) {
-    const user = await this.prisma.usuario.findUnique({
-      where: { id },
-    });
-    if (!user) {
+  async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+    const userIndex = this.users.findIndex(u => u.id === id);
+    if (userIndex === -1) {
       throw new NotFoundException(`User with ID ${id} not found`);
     }
-    return this.prisma.usuario.delete({
-      where: { id },
-    });
+    this.users[userIndex] = { ...this.users[userIndex], ...updateUserDto };
+    return this.users[userIndex];
+  }
+
+  async delete(id: number): Promise<void> {
+    const userIndex = this.users.findIndex(u => u.id === id);
+    if (userIndex === -1) {
+      throw new NotFoundException(`User with ID ${id} not found`);
+    }
+    this.users.splice(userIndex, 1);
   }
 }

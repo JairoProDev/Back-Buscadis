@@ -1,22 +1,28 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
-import { AdsService } from './ads.service';
+// src/ads/ads.controller.ts
+
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { AdsService, Ad } from './ads.service';
+import { CreateAdDto } from './dto/create-ad.dto';
+import { UpdateAdDto } from './dto/update-ad.dto';
 
 @Controller('ads')
 export class AdsController {
   constructor(private readonly adsService: AdsService) {}
 
   @Post()
-  async createAd(@Body() adData: { titulo: string; descripcion: string; usuarioId: string; }) {
+  async createAd(@Body() adData: CreateAdDto): Promise<Ad> {
     return this.adsService.createAd(adData);
   }
 
   @Get(':id')
-  async getAdById(@Param('id') id: string) { // Asegurado que id es string
+  async getAdById(@Param('id') id: string): Promise<Ad> {
     return this.adsService.getAdById(id);
   }
 
-  @Get()
-  async searchAdsByTitle(@Param('title') title: string) {
+  @Get('search/:title')
+  async searchAdsByTitle(@Param('title') title: string): Promise<Ad[]> {
     return this.adsService.searchAdsByTitle(title);
   }
+
+  // Implementa otros endpoints según tus necesidades
 }

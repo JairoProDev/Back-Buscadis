@@ -1,37 +1,34 @@
+// src/auth/auth.service.ts
+
 import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { UsersService, User } from '../users/users.service';
+import { CreateUserDto } from '../users/dto/create-user.dto';
 import { JwtService } from '@nestjs/jwt';
-import * as bcrypt from 'bcrypt';
-import { PrismaPostgresService } from '../prisma/prisma.postgres.service';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly prisma: PrismaPostgresService,
+    private readonly usersService: UsersService,
     private readonly jwtService: JwtService
   ) {}
 
-  async register(email: string, password: string, nombre: string) {
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    return this.prisma.usuario.create({
-      data: { email, password: hashedPassword, nombre, tipo: 'particular' },
-    });
-  }
-
-  async validateUser(email: string, password: string) {
-    const user = await this.prisma.usuario.findUnique({ where: { email } });
-    if (!user) throw new UnauthorizedException('Credenciales inválidas');
-
-    const isValid = await bcrypt.compare(password, user.password);
-    if (!isValid) throw new UnauthorizedException('Credenciales inválidas');
-
+  async register(createUserDto: CreateUserDto): Promise<User> {
+    const user = await this.usersService.create(createUserDto);
     return user;
   }
 
-  async login(user: any) {
-    const payload = { id: user.id, email: user.email, tipo: user.tipo };
+  async validateUser(email: string, password: string): Promise<User | null> {
+    const user = await this.usersService.findByEmail(email);
+    if (user && user.password === password) {
+      return user;
+    }
+    return null;
+  }
+
+  async login(user: User): Promise<{ accessToken: string }> {
+    const payload = { username: user.email, sub: user.id };
     return {
-      access_token: this.jwtService.sign(payload),
+      accessToken: this.jwtService.sign(payload),
     };
   }
 }

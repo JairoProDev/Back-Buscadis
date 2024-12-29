@@ -2,7 +2,7 @@
 
 ## Tecnologías utilizadas
 - NestJS
-- Prisma
+- Prisma ya no
 - PostgreSQL
 - MongoDB
 - Docker
